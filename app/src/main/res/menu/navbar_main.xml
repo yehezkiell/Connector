@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/tugas"
+        android:title="Tugas"
+        android:icon="@mipmap/ic_assignment_late_black_24dp"></item>
+
+    <item android:id="@+id/nilai"
+        android:title="Nilai"
+        android:icon="@mipmap/ic_assessment_black_24dp"></item>
+
+    <item android:id="@+id/logout_menu"
+        android:title="Logout"
+        android:icon="@mipmap/ic_exit_to_app_black_24dp"></item>
+</menu>

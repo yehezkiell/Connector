@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "586138516638",
+    "firebase_url": "https://eclassapp.firebaseio.com",
+    "project_id": "eclassapp",
+    "storage_bucket": "eclassapp.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:586138516638:android:025d6cec2eb09df1",
+        "android_client_info": {
+          "package_name": "com.example.yehezkiel.eclassapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "586138516638-j2375nvsu3cidfjn62s3lkcq8npbov6f.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.yehezkiel.eclassapp",
+            "certificate_hash": "0a809ddeb5ba14b203f85eca0995109622c4f83b"
+          }
+        },
+        {
+          "client_id": "586138516638-q0rk0trbkghh6mokqaqdiae86ut6cjck.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB6LE_rgT3Q2eMZLtJJ_z68YTSkvAealvQ"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "586138516638-q0rk0trbkghh6mokqaqdiae86ut6cjck.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
