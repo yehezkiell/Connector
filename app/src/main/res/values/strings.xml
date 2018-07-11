@@ -8,6 +8,7 @@
     <string name="minimum_password">Password too short, enter minimum 6 characters!</string>
     <string name="title_activity_detail">DetailActivity</string>
 
+
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
 </resources>
