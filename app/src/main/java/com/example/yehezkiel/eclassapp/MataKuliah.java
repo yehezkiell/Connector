@@ -12,6 +12,7 @@ public class MataKuliah {
     private String dosen_2;
     private String day;
     private String jam;
+    private String key;
 
     public MataKuliah(String name, String dosen_1, String dosen_2, String day, String jam) {
         this.name = name;
@@ -19,12 +20,15 @@ public class MataKuliah {
         this.dosen_2 = dosen_2;
         this.day = day;
         this.jam = jam;
+
     }
 
 
     public MataKuliah(){
 
     }
+
+
     public String getName() {
         return name;
     }

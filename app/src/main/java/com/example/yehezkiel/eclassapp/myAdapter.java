@@ -15,8 +15,10 @@ import java.util.List;
 public class myAdapter extends RecyclerView.Adapter<myAdapter.MyViewHolder> {
     private List<MataKuliah> listMatkul;
 
+
     public class MyViewHolder extends RecyclerView.ViewHolder {
         public TextView judul, deskripsi,dosen1,dosen2,day,jam;
+
 
         public MyViewHolder(View view) {
             super(view);
@@ -27,6 +29,7 @@ public class myAdapter extends RecyclerView.Adapter<myAdapter.MyViewHolder> {
             dosen2 = (TextView) view.findViewById(R.id.second_dosen);
 
         }
+
     }
 
 
@@ -51,11 +54,12 @@ public class myAdapter extends RecyclerView.Adapter<myAdapter.MyViewHolder> {
         holder.day.setText(matkul.getDay());
         holder.jam.setText(matkul.getJam());
 
-
     }
 
     @Override
     public int getItemCount() {
         return listMatkul.size();
     }
+
+
 }

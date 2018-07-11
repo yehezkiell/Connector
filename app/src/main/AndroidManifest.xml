@@ -19,7 +19,11 @@
             </intent-filter>
         </activity>
         <activity android:name=".MainActivity" />
-        <activity android:name=".Tugas"></activity>
+        <activity android:name=".Tugas" />
+        <activity
+            android:name=".DetailActivity"
+            android:label="@string/title_activity_detail"
+            android:theme="@style/AppTheme" />
     </application>
 
 </manifest>
