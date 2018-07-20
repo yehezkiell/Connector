@@ -1,0 +1,68 @@
+package com.example.yehezkiel.eclassapp;
+
+/**
+ * Created by Yehezkiel on 7/12/2018.
+ */
+
+public class DaftarTugas{
+    private String judul_tugas;
+    private String deskripsi_tugas;
+    private String tanggal_kumpul;
+    private String tanggal_tugas;
+    private String name;
+
+
+    public DaftarTugas(String name,String judul_tugas, String deskripsi_tugas, String tanggal_kumpul, String tanggal_tugas) {
+        this.name = name;
+        this.judul_tugas = judul_tugas;
+        this.deskripsi_tugas = deskripsi_tugas;
+        this.tanggal_kumpul = tanggal_kumpul;
+        this.tanggal_tugas = tanggal_tugas;
+    }
+
+    public DaftarTugas() {
+
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getJudul_tugas() {
+        return judul_tugas;
+    }
+
+    public void setJudul_tugas(String judul_tugas) {
+        this.judul_tugas = judul_tugas;
+    }
+
+    public String getDeskripsi_tugas() {
+        return deskripsi_tugas;
+    }
+
+    public void setDeskripsi_tugas(String deskripsi_tugas) {
+        this.deskripsi_tugas = deskripsi_tugas;
+    }
+
+    public String getTanggal_kumpul() {
+        return tanggal_kumpul;
+    }
+
+    public void setTanggal_kumpul(String tanggal_kumpul) {
+        this.tanggal_kumpul = tanggal_kumpul;
+    }
+
+    public String getTanggal_tugas() {
+
+        return tanggal_tugas;
+    }
+
+    public void setTanggal_tugas(String tanggal_tugas) {
+
+        this.tanggal_tugas = tanggal_tugas;
+    }
+}

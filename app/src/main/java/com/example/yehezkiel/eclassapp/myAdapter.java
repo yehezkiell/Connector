@@ -16,6 +16,7 @@ public class myAdapter extends RecyclerView.Adapter<myAdapter.MyViewHolder> {
     private List<MataKuliah> listMatkul;
 
 
+
     public class MyViewHolder extends RecyclerView.ViewHolder {
         public TextView judul, deskripsi,dosen1,dosen2,day,jam;
 
@@ -31,8 +32,6 @@ public class myAdapter extends RecyclerView.Adapter<myAdapter.MyViewHolder> {
         }
 
     }
-
-
     public myAdapter(List<MataKuliah> listMatkul) {
         this.listMatkul = listMatkul;
     }
@@ -58,6 +57,7 @@ public class myAdapter extends RecyclerView.Adapter<myAdapter.MyViewHolder> {
 
     @Override
     public int getItemCount() {
+
         return listMatkul.size();
     }
 

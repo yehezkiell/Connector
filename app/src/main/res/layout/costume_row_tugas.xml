@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:background="#eeeeee"
+    android:padding="6dip">
+
+    <TextView
+        android:id="@+id/tanggal_tugas"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:text="@string/_19_sep_2018"
+        android:textSize="12sp"/>
+
+    <View android:layout_width="fill_parent"
+        android:layout_height="1dp"
+        android:background="#FFFFFF"
+        android:layout_below="@id/tanggal_tugas"
+        android:layout_marginTop="5dp"
+        android:id="@+id/garis"/>
+
+    <TextView
+        android:id="@+id/nama_matkul"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignWithParentIfMissing="true"
+        android:layout_below="@+id/garis"
+        android:gravity="center_vertical"
+        android:text="Example application"
+        android:textColor="#5e1b2c"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/judul_tugas"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/nama_matkul"
+        android:ellipsize="marquee"
+        android:singleLine="true"
+        android:text="Judul Tugas"
+        android:textColor="#555555"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/deskripsi_tugas"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/judul_tugas"
+        android:ellipsize="marquee"
+        android:singleLine="true"
+        android:text="Deskripsi Tugas"
+        android:textColor="#555555"
+        android:textSize="15sp" />
+
+    <View android:layout_width="fill_parent"
+        android:layout_height="1dp"
+        android:background="#FFFFFF"
+        android:layout_below="@id/deskripsi_tugas"
+        android:layout_marginTop="5dp"
+        android:id="@+id/garis2"/>
+
+    <TextView
+        android:id="@+id/tanggal_kumpul"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Tanggal kumpul"
+        android:layout_below="@+id/garis2"
+        android:textSize="12sp"/>
+
+
+</RelativeLayout>

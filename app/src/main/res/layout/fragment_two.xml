@@ -10,15 +10,8 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <ProgressBar
-            android:id="@+id/progressBar4"
-            style="?android:attr/progressBarStyle"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            tools:visibility="visible" />
-
         <android.support.v7.widget.RecyclerView
+            android:id="@+id/TugasRView"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
 

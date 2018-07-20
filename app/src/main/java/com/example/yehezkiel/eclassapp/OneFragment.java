@@ -141,7 +141,7 @@ public class OneFragment extends Fragment {
                     fragobj.setArguments(bundle);
 
                     FragmentManager fragmentManager = getFragmentManager();
-                    fragmentManager.beginTransaction().replace(R.id.asd, fragobj).commit();
+                    fragmentManager.beginTransaction().replace(R.id.asd, fragobj).commitAllowingStateLoss();
 
 
 
@@ -162,7 +162,7 @@ public class OneFragment extends Fragment {
                 MataKuliah matkul = listMatkul.get(position);
                 Toast.makeText(getActivity(), keys.get(position) + " is selected!", Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(getActivity(), DetailActivity.class);
-                intent.putExtra("keys", keys);
+                intent.putExtra("keys", keys.get(position));
                 startActivity(intent);
             }
 
