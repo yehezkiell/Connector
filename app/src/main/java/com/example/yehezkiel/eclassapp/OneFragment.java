@@ -51,11 +51,11 @@ public class OneFragment extends Fragment {
     private TextView mTextName;
     private TextView mTextNim;
     private ProgressBar mProgressBar;
+    private DatabaseReference userRef;
+    private DatabaseReference mataKuliahRef ;
+    private FirebaseUser users;
 
 
-    DatabaseReference userRef = FirebaseDatabase.getInstance().getReference("users");
-    FirebaseUser users = FirebaseAuth.getInstance().getCurrentUser();
-    DatabaseReference mataKuliahRef = FirebaseDatabase.getInstance().getReference("courses");
 
 
     public OneFragment() {
@@ -77,6 +77,9 @@ public class OneFragment extends Fragment {
         // Inflate the layout for this fragment
         v =  inflater.inflate(R.layout.fragment_one, container, false);
         mAuth = FirebaseAuth.getInstance();
+        userRef = FirebaseDatabase.getInstance().getReference("users");
+        users = FirebaseAuth.getInstance().getCurrentUser();
+        mataKuliahRef = FirebaseDatabase.getInstance().getReference("courses");
 
         //Recycler View
         mRecycleView = (RecyclerView) v.findViewById(R.id.MainRView);
@@ -116,7 +119,7 @@ public class OneFragment extends Fragment {
                         final String idCourses = dataHasil.getKey();
                         keys.add(idCourses);
 
-                        Log.e("Yhz",idCourses);
+                        Log.e("Anjae",keys.toString());
                         mataKuliahRef.child(idCourses).addListenerForSingleValueEvent(new ValueEventListener() {
                             @Override
                             public void onDataChange(DataSnapshot dataSnapshot2) {
@@ -138,10 +141,10 @@ public class OneFragment extends Fragment {
                     bundle.putStringArrayList("keys", keys);
                     //set Fragmentclass Arguments
                     Fragment fragobj=new TwoFragment();
-                    fragobj.setArguments(bundle);
 
+                    fragobj.setArguments(bundle);
                     FragmentManager fragmentManager = getFragmentManager();
-                    fragmentManager.beginTransaction().replace(R.id.asd, fragobj).commitAllowingStateLoss();
+                    fragmentManager.beginTransaction().replace(R.id.frag2, fragobj).commitAllowingStateLoss();
 
 
 

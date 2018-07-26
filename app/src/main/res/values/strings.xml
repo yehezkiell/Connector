@@ -9,5 +9,9 @@
     <string name="title_activity_detail">DetailActivity</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="_19_sep_2018">19-Sep-2018</string>
+    <string name="matkul">Matakuliah</string>
+    <string name="tugas">Tugas</string>
+    <string name="pengumuman">Pengumuman</string>
+
 
 </resources>

@@ -36,11 +36,12 @@ public class TwoFragment extends Fragment {
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener authListener;
     private ArrayList<String> obj2 = new ArrayList<>();
+    private DatabaseReference userRef;
+    private FirebaseUser users;
+    private DatabaseReference mataKuliahRef;
+    private DatabaseReference daftarTugasRef;
 
-    DatabaseReference userRef = FirebaseDatabase.getInstance().getReference("users");
-    FirebaseUser users = FirebaseAuth.getInstance().getCurrentUser();
-    DatabaseReference mataKuliahRef = FirebaseDatabase.getInstance().getReference("courses");
-    DatabaseReference daftarTugasRef = FirebaseDatabase.getInstance().getReference("tugas");
+
 
 
     public TwoFragment() {
@@ -51,6 +52,10 @@ public class TwoFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
+
+
+
+
     }
 
     @Override
@@ -60,7 +65,10 @@ public class TwoFragment extends Fragment {
 
         v =  inflater.inflate(R.layout.fragment_two, container, false);
         mAuth = FirebaseAuth.getInstance();
-
+        userRef = FirebaseDatabase.getInstance().getReference("users");
+        users = FirebaseAuth.getInstance().getCurrentUser();
+        mataKuliahRef = FirebaseDatabase.getInstance().getReference("courses");
+        daftarTugasRef = FirebaseDatabase.getInstance().getReference("tugas");
 
 
         //Recycler View
@@ -80,6 +88,8 @@ public class TwoFragment extends Fragment {
             obj2 = bundle.getStringArrayList("keys");
             Log.e("nba",obj2.toString());
         }
+
+
 
 
         for(int i = 0;i<obj2.size();i++){

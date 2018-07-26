@@ -1,5 +1,6 @@
 package com.example.yehezkiel.eclassapp;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -17,7 +18,6 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -51,26 +51,23 @@ public class MainActivity extends AppCompatActivity {
     private NavigationView mNavigationView;
     private TextView mTextName;
     private TextView mTextNim;
-    private ProgressBar mProgressBar;
+
 
     static {
         FirebaseDatabase.getInstance().setPersistenceEnabled(true);
     }
 
-    DatabaseReference userRef = FirebaseDatabase.getInstance().getReference("users");
-    FirebaseUser users = FirebaseAuth.getInstance().getCurrentUser();
-    DatabaseReference mataKuliahRef = FirebaseDatabase.getInstance().getReference("courses");
+    private DatabaseReference userRef;
+    private FirebaseUser users;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main2);
-
-
+        userRef = FirebaseDatabase.getInstance().getReference("users");
+        users = FirebaseAuth.getInstance().getCurrentUser();
         mAuth = FirebaseAuth.getInstance();
-
-
 
         //Navbar menu
         mToolbar = (Toolbar) findViewById(R.id.navbaraction);
@@ -85,12 +82,14 @@ public class MainActivity extends AppCompatActivity {
         View header = mNavigationView.getHeaderView(0);
         mTextName = (TextView) header.findViewById(R.id.header_name);
         mTextNim = (TextView) header.findViewById(R.id.header_nim);
-        mProgressBar = (ProgressBar) findViewById(R.id.progressBar2);
-        mProgressBar.setVisibility(View.VISIBLE);
+
 
         //Tab Layout
         viewPager = (ViewPager) findViewById(R.id.viewpager);
-        setupViewPager(viewPager);
+
+        ViewPagerAdapter adapter = new ViewPagerAdapter(this, getSupportFragmentManager());
+        viewPager.setAdapter(adapter);
+
 
         tabLayout = (TabLayout) findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(viewPager);
@@ -143,40 +142,51 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    private void setupViewPager(ViewPager viewPager) {
-        ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
-        adapter.addFragment(new OneFragment(), "Beranda");
-        adapter.addFragment(new TwoFragment(), "Tugas");
-        adapter.addFragment(new ThreeFragment(), "Pengumuman");
-        viewPager.setAdapter(adapter);
-    }
 
     class ViewPagerAdapter extends FragmentPagerAdapter {
-        private final List<Fragment> mFragmentList = new ArrayList<>();
-        private final List<String> mFragmentTitleList = new ArrayList<>();
+        private Context mContext;
 
-        public ViewPagerAdapter(FragmentManager manager) {
-            super(manager);
+        public ViewPagerAdapter(Context context, FragmentManager fm) {
+            super(fm);
+            mContext = context;
         }
+
+
+        // This determines the fragment for each tab
+
+
 
         @Override
         public Fragment getItem(int position) {
-            return mFragmentList.get(position);
+            if (position == 0) {
+                return new OneFragment();
+            } else if (position == 1){
+                return new TwoFragment();
+            } else{
+                return new ThreeFragment();
+            }
         }
 
+        // This determines the number of tabs
         @Override
         public int getCount() {
-            return mFragmentList.size();
+            return 3;
         }
 
-        public void addFragment(Fragment fragment, String title) {
-            mFragmentList.add(fragment);
-            mFragmentTitleList.add(title);
-        }
-
+        // This determines the title for each tab
         @Override
         public CharSequence getPageTitle(int position) {
-            return mFragmentTitleList.get(position);
+            // Generate title based on item position
+            switch (position) {
+                case 0:
+                    return mContext.getString(R.string.matkul);
+                case 1:
+                    return mContext.getString(R.string.tugas);
+                case 2:
+                    return mContext.getString(R.string.pengumuman);
+                default:
+                    return null;
+            }
         }
     }
 

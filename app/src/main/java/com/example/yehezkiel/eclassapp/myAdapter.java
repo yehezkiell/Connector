@@ -33,6 +33,7 @@ public class myAdapter extends RecyclerView.Adapter<myAdapter.MyViewHolder> {
 
     }
     public myAdapter(List<MataKuliah> listMatkul) {
+
         this.listMatkul = listMatkul;
     }
 

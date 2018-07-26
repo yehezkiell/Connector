@@ -23,9 +23,9 @@ public class myAdapterTugas extends RecyclerView.Adapter<myAdapterTugas.MyViewHo
 
         public MyViewHolder(View view) {
             super(view);
-            nama_matkul = (TextView) view.findViewById(R.id.nama_matkul);
-            judul_tugas = (TextView) view.findViewById(R.id.judul_tugas);
-            deskripsi_tugas = (TextView) view.findViewById(R.id.deskripsi_tugas);
+            nama_matkul = (TextView) view.findViewById(R.id.judul_p);
+            judul_tugas = (TextView) view.findViewById(R.id.deskripsi_p);
+            deskripsi_tugas = (TextView) view.findViewById(R.id.tanggal_p);
             tanggal_kumpul = (TextView) view.findViewById(R.id.tanggal_kumpul);
             tanggal_tugas = (TextView) view.findViewById(R.id.tanggal_tugas);
         }
