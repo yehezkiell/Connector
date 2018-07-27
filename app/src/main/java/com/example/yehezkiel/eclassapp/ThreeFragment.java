@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -25,6 +26,7 @@ public class ThreeFragment extends Fragment {
     View v;
     private List<DaftarPengumuman> listPengumuman = new ArrayList<>();
     private ArrayList<String> obj3 = new ArrayList<>();
+    private ArrayList<String> listTugasKey = new ArrayList<>();
     List<ListItem> consolidatedList = new ArrayList<>();
     private RecyclerView mRecyclerView;
     private RecyclerView.Adapter adapter;
@@ -76,13 +78,14 @@ public class ThreeFragment extends Fragment {
         userRef.child(users.getUid()).child("courses").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(final DataSnapshot dataSnapshot) {
-                obj3.clear();
+
                 if(dataSnapshot.exists()){
                     long datacount = dataSnapshot.getChildrenCount();
                     int i = 0;
                     for(DataSnapshot dataHasil : dataSnapshot.getChildren()){
                         final String idCourse =  dataHasil.getKey();
                         obj3.add(idCourse);
+                        Log.e("obj3", obj3.toString());
                         if(datacount-1 == i){
                             queryObj3();
                         }
@@ -101,58 +104,71 @@ public class ThreeFragment extends Fragment {
         });
 
 
-
-        HashMap<String, List<DaftarPengumuman>> groupedHashMap = groupDataIntoHashMap(listPengumuman);
-
-        for (String nama_p : groupedHashMap.keySet()) {
-            PengumumanItem nameItem = new PengumumanItem();
-            nameItem.setNama_matkul(nama_p);
-            consolidatedList.add(nameItem);
-
-
-            for (DaftarPengumuman daftarPengumuman : groupedHashMap.get(nama_p)) {
-                GeneralItem generalItem = new GeneralItem();
-                generalItem.setDaftarPengumuman(daftarPengumuman);//setBookingDataTabs(bookingDataTabs);
-                consolidatedList.add(generalItem);
-            }
-        }
-
         return v;
     }
 
     public void queryObj3(){
         for(int j = 0 ; j<obj3.size() ;j++){
+            Log.e("alas1", "sapa duluan");
+            final int finalJ = j;
             mataKuliahRef.child(obj3.get(j)).addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(final DataSnapshot dataSnapshot) {
-
                     if (dataSnapshot.exists()) {
-
+                        Log.e("alas1", "sapa duluan 2");
+                        final String name = (String) dataSnapshot.child("name").getValue();
                         if (dataSnapshot.hasChild("pengumuman")) {
-                            final String name = (String) dataSnapshot.child("name").getValue();
+                            Log.e("alas1", "sapa duluan3");
                             for (DataSnapshot idKeyPeng : dataSnapshot.child("pengumuman").getChildren()) {
-
-                                    daftarPengumumanRef.child(idKeyPeng.getKey()).addValueEventListener(new ValueEventListener() {
-                                        @Override
-                                        public void onDataChange(DataSnapshot dataSnapshot2) {
-                                            DaftarPengumuman pengumuman = new DaftarPengumuman();
-                                            pengumuman = dataSnapshot2.getValue(DaftarPengumuman.class);
-                                            pengumuman.setNama_p(name);
-                                            listPengumuman.add(pengumuman);
-
-                                        }
-
-                                        @Override
-                                        public void onCancelled(DatabaseError databaseError) {
-
-                                        }
-                                    });
-
+                                listTugasKey.add(idKeyPeng.getKey());
+                                Log.e("buk", "ngelog sebelum if");
+                            }//end of for
+                            if(obj3.size() - 1 == finalJ) {
+                                Log.e("buk", "ngelog didalam if");
+                                doit(listTugasKey,name);
 
                             }
 
+                        }//end of has child
+                        else{
+                            Log.e("alas1", "sapa duluan4");
+                            if(obj3.size() - 1 == finalJ) {
+                                doit(listTugasKey,name);
+
+                            }
                         }
+
+
+                    }//end of if exist
+
+
+                }//end of first ondatachange
+
+
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
+
+                }
+            });
+        }
+    }
+
+    private void doit(final ArrayList<String> listTugasKey, final String name) {
+        Log.e("alas1", "sapa duluan5");
+        for(int j = 0 ; j<listTugasKey.size() ;j++){
+            final int finalJ = j;
+            daftarPengumumanRef.child(listTugasKey.get(j)).addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot2) {
+                    DaftarPengumuman pengumuman = new DaftarPengumuman();
+                    pengumuman = dataSnapshot2.getValue(DaftarPengumuman.class);
+                    pengumuman.setNama_p(name);
+                    listPengumuman.add(pengumuman);
+                    if(listTugasKey.size() - 1 == finalJ) {
+                        hashMap();
+                        Log.e("alas1", "sapa duluan6");
                     }
+
                 }
 
                 @Override
@@ -162,6 +178,8 @@ public class ThreeFragment extends Fragment {
             });
         }
     }
+
+
 
     private HashMap<String, List<DaftarPengumuman>> groupDataIntoHashMap(List<DaftarPengumuman> listOfDaftarPengumuman) {
 
@@ -187,6 +205,22 @@ public class ThreeFragment extends Fragment {
         return groupedHashMap;
     }
 
+    private void hashMap(){
+        HashMap<String, List<DaftarPengumuman>> groupedHashMap = groupDataIntoHashMap(listPengumuman);
+
+        for (String nama_p : groupedHashMap.keySet()) {
+            PengumumanItem nameItem = new PengumumanItem();
+            nameItem.setNama_matkul(nama_p);
+            consolidatedList.add(nameItem);
+
+
+            for (DaftarPengumuman daftarPengumuman : groupedHashMap.get(nama_p)) {
+                GeneralItem generalItem = new GeneralItem();
+                generalItem.setDaftarPengumuman(daftarPengumuman);//setBookingDataTabs(bookingDataTabs);
+                consolidatedList.add(generalItem);
+            }
+        }
+    }
 
 
 }
