@@ -5,13 +5,13 @@ package com.example.yehezkiel.eclassapp;
  */
 
 public class DaftarPengumuman {
-    private String nama_p,deskripsi,judul,tanggal;
+    private String nama_p,deskripsi,judul,tanggal_peng;
 
-    public DaftarPengumuman(String nama_p, String deskripsi, String judul, String tanggal) {
+    public DaftarPengumuman(String nama_p, String deskripsi, String judul, String tanggal_peng) {
         this.nama_p = nama_p;
         this.deskripsi = deskripsi;
         this.judul = judul;
-        this.tanggal = tanggal;
+        this.tanggal_peng = tanggal_peng;
     }
 
     public String getDeskripsi() {
@@ -30,12 +30,12 @@ public class DaftarPengumuman {
         this.judul = judul;
     }
 
-    public String getTanggal() {
-        return tanggal;
+    public String getTanggal_peng() {
+        return tanggal_peng;
     }
 
-    public void setTanggal(String tanggal) {
-        this.tanggal = tanggal;
+    public void setTanggal_peng(String tanggal_peng) {
+        this.tanggal_peng = tanggal_peng;
     }
 
     public DaftarPengumuman() {

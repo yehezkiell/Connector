@@ -27,6 +27,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.thekhaeng.recyclerviewmargin.LayoutMarginDecoration;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -93,6 +94,9 @@ public class OneFragment extends Fragment {
         mRecycleView.addItemDecoration(new DividerItemDecoration(getActivity(), LinearLayoutManager.VERTICAL));
         mAdapter = new myAdapter(listMatkul);
         mRecycleView.setAdapter(mAdapter);
+
+        //add margin between item in recyclerview
+        mRecycleView.addItemDecoration(new LayoutMarginDecoration(1,15));
 
         userRef.child(users.getUid()).addValueEventListener(new ValueEventListener() {
             @Override

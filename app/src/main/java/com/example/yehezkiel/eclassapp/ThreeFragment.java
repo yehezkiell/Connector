@@ -87,7 +87,7 @@ public class ThreeFragment extends Fragment {
                         obj3.add(idCourse);
                         Log.e("obj3", obj3.toString());
                         if(datacount-1 == i){
-                            queryObj3();
+                            queryObj3(obj3);
                         }
                         i++;
                     }
@@ -107,75 +107,59 @@ public class ThreeFragment extends Fragment {
         return v;
     }
 
-    public void queryObj3(){
+    public void queryObj3(final ArrayList<String> obj3){
+        final ArrayList<Integer> test1 = new ArrayList<>();
+        final ArrayList<Integer> test2 = new ArrayList<>();
         for(int j = 0 ; j<obj3.size() ;j++){
-            Log.e("alas1", "sapa duluan");
-            final int finalJ = j;
-            mataKuliahRef.child(obj3.get(j)).addValueEventListener(new ValueEventListener() {
-                @Override
-                public void onDataChange(final DataSnapshot dataSnapshot) {
-                    if (dataSnapshot.exists()) {
-                        Log.e("alas1", "sapa duluan 2");
-                        final String name = (String) dataSnapshot.child("name").getValue();
-                        if (dataSnapshot.hasChild("pengumuman")) {
-                            Log.e("alas1", "sapa duluan3");
-                            for (DataSnapshot idKeyPeng : dataSnapshot.child("pengumuman").getChildren()) {
-                                listTugasKey.add(idKeyPeng.getKey());
-                                Log.e("buk", "ngelog sebelum if");
-                            }//end of for
-                            if(obj3.size() - 1 == finalJ) {
-                                Log.e("buk", "ngelog didalam if");
-                                doit(listTugasKey,name);
+            int k = 0;
 
+                mataKuliahRef.child(obj3.get(j)).addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(final DataSnapshot dataSnapshot) {
+                        if (dataSnapshot.exists()) {
+                            final String name = (String) dataSnapshot.child("name").getValue();
+                            if (dataSnapshot.hasChild("pengumuman")) {
+                                for (DataSnapshot idKeyPeng : dataSnapshot.child("pengumuman").getChildren()) {
+                                    test1.add(0);
+                                    daftarPengumumanRef.child(idKeyPeng.getKey()).addValueEventListener(new ValueEventListener() {
+                                        @Override
+                                        public void onDataChange(DataSnapshot dataSnapshot2) {
+                                            DaftarPengumuman pengumuman = new DaftarPengumuman();
+                                            pengumuman = dataSnapshot2.getValue(DaftarPengumuman.class);
+                                            pengumuman.setNama_p(name);
+                                            listPengumuman.add(pengumuman);
+                                            adapter.notifyDataSetChanged();
+                                            test2.add(0);
+
+                                            if (test1.size() == test2.size()) {
+                                                hashMap();
+                                            }
+
+                                        }
+
+                                        @Override
+                                        public void onCancelled(DatabaseError databaseError) {
+
+                                        }
+                                    });
+                                }//end of for
+
+                            }//end of has child
+                            else {
                             }
 
-                        }//end of has child
-                        else{
-                            Log.e("alas1", "sapa duluan4");
-                            if(obj3.size() - 1 == finalJ) {
-                                doit(listTugasKey,name);
 
-                            }
-                        }
+                        }//end of if exist
 
 
-                    }//end of if exist
+                    }//end of first ondatachange
 
 
-                }//end of first ondatachange
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
 
-
-                @Override
-                public void onCancelled(DatabaseError databaseError) {
-
-                }
-            });
-        }
-    }
-
-    private void doit(final ArrayList<String> listTugasKey, final String name) {
-        Log.e("alas1", "sapa duluan5");
-        for(int j = 0 ; j<listTugasKey.size() ;j++){
-            final int finalJ = j;
-            daftarPengumumanRef.child(listTugasKey.get(j)).addValueEventListener(new ValueEventListener() {
-                @Override
-                public void onDataChange(DataSnapshot dataSnapshot2) {
-                    DaftarPengumuman pengumuman = new DaftarPengumuman();
-                    pengumuman = dataSnapshot2.getValue(DaftarPengumuman.class);
-                    pengumuman.setNama_p(name);
-                    listPengumuman.add(pengumuman);
-                    if(listTugasKey.size() - 1 == finalJ) {
-                        hashMap();
-                        Log.e("alas1", "sapa duluan6");
                     }
-
-                }
-
-                @Override
-                public void onCancelled(DatabaseError databaseError) {
-
-                }
-            });
+                });
         }
     }
 

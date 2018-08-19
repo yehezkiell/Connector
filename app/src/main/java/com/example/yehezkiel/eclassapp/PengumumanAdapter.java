@@ -59,7 +59,7 @@ public class PengumumanAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
                 GeneralViewHolder generalViewHolder= (GeneralViewHolder) viewHolder;
                 generalViewHolder.txtJudul.setText(generalItem.getDaftarPengumuman().getJudul());
                 generalViewHolder.txtDeskripsi.setText(generalItem.getDaftarPengumuman().getDeskripsi());
-                generalViewHolder.txtTanggal.setText(generalItem.getDaftarPengumuman().getTanggal());
+                generalViewHolder.txtTanggal.setText(generalItem.getDaftarPengumuman().getTanggal_peng());
 
 
                 break;
