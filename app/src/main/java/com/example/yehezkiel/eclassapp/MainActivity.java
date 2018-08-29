@@ -112,11 +112,16 @@ public class MainActivity extends AppCompatActivity {
         userRef.child(users.getUid()).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                String name = (String) dataSnapshot.child("name").getValue().toString();
-                String nim = (String) dataSnapshot.child("nim").getValue().toString();
+                if(dataSnapshot.exists()) {
 
-                mTextNim.setText(nim);
-                mTextName.setText(name);
+                    String name = (String) dataSnapshot.child("name").getValue().toString();
+                    String nim = (String) dataSnapshot.child("nim").getValue().toString();
+
+                    mTextNim.setText(nim);
+                    mTextName.setText(name);
+                }else {
+
+                }
 
             }
 

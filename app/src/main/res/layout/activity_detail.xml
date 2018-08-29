@@ -22,17 +22,7 @@
             app:expandedTitleMarginStart="48dp"
             app:expandedTitleMarginEnd="64dp"
             android:background="@drawable/materialcoordinator"
-            app:expandedTitleTextAppearance="@android:color/transparent"
-            >
-
-            <ImageButton
-                android:id="@+id/imageButton2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="right"
-                android:layout_margin="20dp"
-                android:background="@android:color/transparent"
-                app:srcCompat="@mipmap/baseline_info_white_16dp" />
+            app:expandedTitleTextAppearance="@android:color/transparent">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -43,6 +33,7 @@
                 android:orientation="horizontal">
 
                 <TextView
+                    android:id="@+id/nama_matkul_judul"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Rekayasa Perangkat Lunak"
@@ -60,11 +51,34 @@
                 android:layout_height="?attr/actionBarSize"
                 app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
 
-
+            <ImageButton
+                android:onClick="showPopup"
+                android:id="@+id/imageButton2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:layout_margin="20dp"
+                android:background="@android:color/transparent"
+                app:srcCompat="@mipmap/baseline_info_white_16dp" />
 
 
         </android.support.design.widget.CollapsingToolbarLayout>
 
     </android.support.design.widget.AppBarLayout>
+
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <include
+            layout="@layout/content_detail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+    </android.support.v4.widget.NestedScrollView>
+
+
+
 
 </android.support.design.widget.CoordinatorLayout>

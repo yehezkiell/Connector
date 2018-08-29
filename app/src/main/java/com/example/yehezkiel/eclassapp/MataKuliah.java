@@ -13,6 +13,8 @@ public class MataKuliah {
     private String day;
     private String jam;
     private String key;
+    private String kelas;
+    private String bobot;
 
     public MataKuliah(String name, String dosen_1, String dosen_2, String day, String jam) {
         this.name = name;
@@ -26,6 +28,23 @@ public class MataKuliah {
 
     public MataKuliah(){
 
+    }
+
+
+    public String getKelas() {
+        return kelas;
+    }
+
+    public void setKelas(String kelas) {
+        this.kelas = kelas;
+    }
+
+    public String getBobot() {
+        return bobot;
+    }
+
+    public void setBobot(String bobot) {
+        this.bobot = bobot;
     }
 
 

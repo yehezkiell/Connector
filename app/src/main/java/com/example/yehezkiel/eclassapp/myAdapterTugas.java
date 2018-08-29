@@ -32,6 +32,7 @@ public class myAdapterTugas extends RecyclerView.Adapter<myAdapterTugas.MyViewHo
     }
 
     public myAdapterTugas(List<DaftarTugas> listTugas) {
+
         this.listTugas = listTugas;
     }
 
@@ -45,7 +46,7 @@ public class myAdapterTugas extends RecyclerView.Adapter<myAdapterTugas.MyViewHo
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position) {
         DaftarTugas tugas = listTugas.get(position);
-        holder.nama_matkul.setText(tugas.getName());
+        holder.nama_matkul.setText(tugas.getNama_tugas());
         holder.judul_tugas.setText(tugas.getJudul_tugas());
         holder.deskripsi_tugas.setText(tugas.getDeskripsi_tugas());
         holder.tanggal_kumpul.setText(tugas.getTanggal_kumpul());

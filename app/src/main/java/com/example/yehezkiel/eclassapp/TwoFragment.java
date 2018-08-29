@@ -40,6 +40,11 @@ public class TwoFragment extends Fragment {
     private FirebaseUser users;
     private DatabaseReference mataKuliahRef;
     private DatabaseReference daftarTugasRef;
+    private DatabaseReference mTugasRef;
+    private boolean loaded;
+    private int i=0;
+
+
 
 
 
@@ -65,10 +70,11 @@ public class TwoFragment extends Fragment {
 
         v =  inflater.inflate(R.layout.fragment_two, container, false);
         mAuth = FirebaseAuth.getInstance();
-        userRef = FirebaseDatabase.getInstance().getReference("users");
+        userRef = FirebaseDatabase.getInstance().getReference("user_course");
         users = FirebaseAuth.getInstance().getCurrentUser();
         mataKuliahRef = FirebaseDatabase.getInstance().getReference("courses");
         daftarTugasRef = FirebaseDatabase.getInstance().getReference("tugas");
+        mTugasRef = FirebaseDatabase.getInstance().getReference("tugas_course");
 
 
         //Recycler View
@@ -89,56 +95,100 @@ public class TwoFragment extends Fragment {
             Log.e("nba",obj2.toString());
         }
 
+        LoadData();
 
-
-
-        for(int i = 0;i<obj2.size();i++){
-            final int finalI = i;
-            listTugas.clear();
-            mataKuliahRef.child(obj2.get(i)).addValueEventListener(new ValueEventListener() {
-
-                @Override
-                public void onDataChange(DataSnapshot dataSnapshot) {
-
-                    if(dataSnapshot.hasChild("tugas")){
-
-                        final String name = (String) dataSnapshot.child("name").getValue();
-                        for(DataSnapshot data1 : dataSnapshot.child("tugas").getChildren()){
-
-                            Log.e("wasu", data1.getKey());
-                          daftarTugasRef.child(data1.getKey()).addListenerForSingleValueEvent(new ValueEventListener() {
-                              @Override
-
-                              public void onDataChange(DataSnapshot dataSnapshot2) {
-                                      DaftarTugas tugas = new DaftarTugas();
-                                      tugas = dataSnapshot2.getValue(DaftarTugas.class);
-                                      tugas.setName(name);
-                                      listTugas.add(tugas);
-                                      mAdapter.notifyDataSetChanged();
-                              }
-                              @Override
-                              public void onCancelled(DatabaseError databaseError) {
-
-                              }
-                          });
-                      }
-                    }else{
-
-                    }
-
-
-                }
-
-                @Override
-                public void onCancelled(DatabaseError databaseError) {
-
-                }
-            });
-
-
-        }
 
 
         return v;
+    }
+
+
+    private void LoadData(){
+//        listTugas.clear();
+//        loaded=false;
+        listTugas.clear();
+        userRef.child(users.getUid()).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+//                final ArrayList<Integer> test1 = new ArrayList<>();
+//                final ArrayList<Integer> test2 = new ArrayList<>();
+                if (dataSnapshot.exists()){
+                    Log.e("coba","if pertama");
+
+                    for(final DataSnapshot dataHasil : dataSnapshot.getChildren()){
+                        Log.e("datahasil",""+dataHasil.getValue());
+                        final String name = (String) dataHasil.getValue();
+
+                        final String idCourses = dataHasil.getKey();
+
+                        mTugasRef.child(idCourses).addValueEventListener(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(final DataSnapshot dataSnapshot2) {
+                                listTugas.clear();
+                                if(dataSnapshot2.exists()) {
+
+                                    Log.e("coba","if kedua");
+
+//                                    test1.add(1);
+                                    for (DataSnapshot dataHasil2 : dataSnapshot2.getChildren()) {
+                                        Log.e("coba","loop kedua");
+                                        final String idTugas = dataHasil2.getKey();
+                                        daftarTugasRef.child(idTugas).addValueEventListener(new ValueEventListener() {
+                                            @Override
+                                            public void onDataChange(DataSnapshot dataSnapshot3) {
+                                                //cek status 0, pgl lod data true
+                                                Log.e("coba","hasil");
+                                                DaftarTugas tugas = new DaftarTugas();
+                                                tugas = dataSnapshot3.getValue(DaftarTugas.class);
+                                                listTugas.add(tugas);
+//                                                test2.add(1);
+//                                                if(test1.size() == test2.size()){
+                                                    mAdapter.notifyDataSetChanged();
+//                                                    set true
+//                                                    if(loaded){
+//                                                        LoadData();
+//                                                    }
+//                                                    loaded = true;
+//                                                    Log.e("coba","masuk count dan hrus paling blkng");
+//                                                }
+
+
+
+                                            }
+
+                                            @Override
+                                            public void onCancelled(DatabaseError databaseError) {
+
+                                            }
+                                        });
+                                    //cek loop seleseai
+                                    }//end of loop for datasnapshot 2
+                                }else{
+
+                                }
+
+                            }
+
+
+
+                            @Override
+                            public void onCancelled(DatabaseError databaseError) {
+
+                            }
+                        });
+
+
+
+                    }// end of looping datasnapshot1
+                }else{
+
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
     }
 }

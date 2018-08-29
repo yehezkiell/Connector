@@ -10,8 +10,6 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-
-
         <ProgressBar
             android:id="@+id/progressBar2"
             style="?android:attr/progressBarStyle"

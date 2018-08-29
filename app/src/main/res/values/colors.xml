@@ -4,6 +4,14 @@
     <color name="colorPrimaryDark">#0097a7</color>
     <color name="colorAccent">#f2fe71</color>
     <color name="white">#ffffff</color>
+    <color name="orange">#e2f1f8</color>
+    <color name="purple">#12005e</color>
+    <color name="green">#80e27e</color>
+    <color name="yellow">#88ffff</color>
+    <color name="indigo">#000051</color>
+    <color name="deeporange">#ffc1e3</color>
+    <color name="pink">#c7a4ff</color>
+
 
 
 </resources>

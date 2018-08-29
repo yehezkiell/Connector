@@ -6,14 +6,14 @@ package com.example.yehezkiel.eclassapp;
 
 public class DaftarTugas{
     private String judul_tugas;
+    private String nama_tugas;
     private String deskripsi_tugas;
     private String tanggal_kumpul;
     private String tanggal_tugas;
-    private String name;
 
 
-    public DaftarTugas(String name,String judul_tugas, String deskripsi_tugas, String tanggal_kumpul, String tanggal_tugas) {
-        this.name = name;
+    public DaftarTugas(String nama_tugas,String judul_tugas, String deskripsi_tugas, String tanggal_kumpul, String tanggal_tugas) {
+        this.nama_tugas = nama_tugas;
         this.judul_tugas = judul_tugas;
         this.deskripsi_tugas = deskripsi_tugas;
         this.tanggal_kumpul = tanggal_kumpul;
@@ -24,12 +24,14 @@ public class DaftarTugas{
 
     }
 
-    public String getName() {
-        return name;
+
+
+    public String getNama_tugas() {
+        return nama_tugas;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setNama_tugas(String nama_tugas) {
+        this.nama_tugas = nama_tugas;
     }
 
     public String getJudul_tugas() {

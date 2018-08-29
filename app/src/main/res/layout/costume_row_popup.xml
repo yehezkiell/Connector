@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:padding="6dip"
+    android:background="#eeeeee">
+
+    <RelativeLayout
+        android:layout_width="113dp"
+        android:layout_height="75dp"
+        android:background="#81b9bf">
+
+        <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/gambar_dosen_1"
+            android:layout_width="42dp"
+            android:layout_height="42dp"
+            android:layout_marginLeft="34dp"
+            android:src="@drawable/pakanton"
+            app:civ_border_color="#FF000000"
+            app:civ_border_width="2dp"
+            android:layout_marginTop="5dp"/>
+
+
+        <TextView
+            android:id="@+id/nama_dosen_1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/gambar_dosen_1"
+            android:layout_centerHorizontal="true"
+            android:ellipsize="marquee"
+            android:gravity="center"
+            android:text="Budi Susanto S.Kom "
+            android:textColor="#555555"
+            android:textSize="10sp"
+            android:textStyle="bold"
+            android:layout_marginTop="3dp"/>
+
+    </RelativeLayout>
+</LinearLayout>

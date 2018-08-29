@@ -1,7 +1,9 @@
 package com.example.yehezkiel.eclassapp;
 
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v4.app.Fragment;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -36,6 +38,9 @@ public class ThreeFragment extends Fragment {
     private FirebaseUser users;
     private DatabaseReference mataKuliahRef;
     private DatabaseReference daftarPengumumanRef;
+    private SwipeRefreshLayout swipeLayout;
+
+
 
     public ThreeFragment() {
         // Required empty public constructor
@@ -58,10 +63,29 @@ public class ThreeFragment extends Fragment {
 
         v =  inflater.inflate(R.layout.fragment_three, container, false);
 
-        userRef = FirebaseDatabase.getInstance().getReference("users");
+        userRef = FirebaseDatabase.getInstance().getReference("user_course");
         users = FirebaseAuth.getInstance().getCurrentUser();
         mataKuliahRef = FirebaseDatabase.getInstance().getReference("courses");
         daftarPengumumanRef = FirebaseDatabase.getInstance().getReference("pengumuman");
+
+
+        swipeLayout = (SwipeRefreshLayout) v.findViewById(R.id.swiperefresh);
+
+        swipeLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                new Handler().postDelayed(new Runnable() {
+
+                    @Override public void run() {
+                        swipeLayout.setRefreshing(false);
+                        adapter.notifyDataSetChanged();
+
+                    }
+
+                }, 2000);
+            }
+        });
+
 
         mAuth = FirebaseAuth.getInstance();
 
@@ -75,7 +99,7 @@ public class ThreeFragment extends Fragment {
         mRecyclerView.setAdapter(adapter);
 
 
-        userRef.child(users.getUid()).child("courses").addValueEventListener(new ValueEventListener() {
+        userRef.child(users.getUid()).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(final DataSnapshot dataSnapshot) {
 
@@ -107,59 +131,66 @@ public class ThreeFragment extends Fragment {
         return v;
     }
 
+
+
+
+
     public void queryObj3(final ArrayList<String> obj3){
         final ArrayList<Integer> test1 = new ArrayList<>();
         final ArrayList<Integer> test2 = new ArrayList<>();
         for(int j = 0 ; j<obj3.size() ;j++){
             int k = 0;
 
-                mataKuliahRef.child(obj3.get(j)).addValueEventListener(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(final DataSnapshot dataSnapshot) {
-                        if (dataSnapshot.exists()) {
-                            final String name = (String) dataSnapshot.child("name").getValue();
-                            if (dataSnapshot.hasChild("pengumuman")) {
-                                for (DataSnapshot idKeyPeng : dataSnapshot.child("pengumuman").getChildren()) {
-                                    test1.add(0);
-                                    daftarPengumumanRef.child(idKeyPeng.getKey()).addValueEventListener(new ValueEventListener() {
-                                        @Override
-                                        public void onDataChange(DataSnapshot dataSnapshot2) {
-                                            DaftarPengumuman pengumuman = new DaftarPengumuman();
-                                            pengumuman = dataSnapshot2.getValue(DaftarPengumuman.class);
-                                            pengumuman.setNama_p(name);
-                                            listPengumuman.add(pengumuman);
-                                            adapter.notifyDataSetChanged();
-                                            test2.add(0);
+            mataKuliahRef.child(obj3.get(j)).addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(final DataSnapshot dataSnapshot) {
+                    if (dataSnapshot.exists()) {
+                        listPengumuman.clear();
+                        final String name = (String) dataSnapshot.child("name").getValue();
+                        if (dataSnapshot.hasChild("pengumuman")) {
+                            for (DataSnapshot idKeyPeng : dataSnapshot.child("pengumuman").getChildren()) {
+                                test1.add(0);
+                                daftarPengumumanRef.child(idKeyPeng.getKey()).addListenerForSingleValueEvent(new ValueEventListener() {
 
-                                            if (test1.size() == test2.size()) {
-                                                hashMap();
-                                            }
+                                    @Override
+                                    public void onDataChange(DataSnapshot dataSnapshot2) {
+                                        DaftarPengumuman pengumuman = new DaftarPengumuman();
+                                        pengumuman = dataSnapshot2.getValue(DaftarPengumuman.class);
+                                        pengumuman.setNama_p(name);
+                                        listPengumuman.add(pengumuman);
+                                        adapter.notifyDataSetChanged();
+                                        test2.add(0);
 
+                                        if (test1.size() == test2.size()) {
+                                            hashMap();
                                         }
 
-                                        @Override
-                                        public void onCancelled(DatabaseError databaseError) {
+                                    }
 
-                                        }
-                                    });
-                                }//end of for
+                                    @Override
+                                    public void onCancelled(DatabaseError databaseError) {
 
-                            }//end of has child
-                            else {
-                            }
+                                    }
+                                });
+                            }//end of for
 
 
-                        }//end of if exist
+                        }//end of has child
+                        else {
+                        }
 
 
-                    }//end of first ondatachange
+                    }//end of if exist
 
 
-                    @Override
-                    public void onCancelled(DatabaseError databaseError) {
+                }//end of first ondatachange
 
-                    }
-                });
+
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
+
+                }
+            });
         }
     }
 

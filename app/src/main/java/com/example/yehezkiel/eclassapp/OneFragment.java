@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.DividerItemDecoration;
@@ -30,6 +29,7 @@ import com.google.firebase.database.ValueEventListener;
 import com.thekhaeng.recyclerviewmargin.LayoutMarginDecoration;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 
@@ -38,6 +38,11 @@ public class OneFragment extends Fragment {
     View v;
     private List<MataKuliah> listMatkul = new ArrayList<>();
     private ArrayList<String> keys = new ArrayList<>();
+    private ArrayList<String> namaMatkulPut = new ArrayList<>();
+    private ArrayList<String> dayMatkulPut = new ArrayList<>();
+    private ArrayList<String> jamMatkulPut = new ArrayList<>();
+    private ArrayList<String> bobotMatkulPut = new ArrayList<>();
+    private ArrayList<String> kelasMatkulPut = new ArrayList<>();
     private myAdapter myAdapter;
     private Button logoutBtn;
     private FirebaseAuth mAuth;
@@ -53,8 +58,15 @@ public class OneFragment extends Fragment {
     private TextView mTextNim;
     private ProgressBar mProgressBar;
     private DatabaseReference userRef;
+    private DatabaseReference userRefProdi;
     private DatabaseReference mataKuliahRef ;
     private FirebaseUser users;
+    private String temp;
+    private String temp2;
+    private String temp3;
+    private ArrayList<HashMap<String, Object>> temp4 = new ArrayList<HashMap<String, Object>>();
+    private DatabaseReference courseRef;
+
 
 
 
@@ -80,7 +92,8 @@ public class OneFragment extends Fragment {
         mAuth = FirebaseAuth.getInstance();
         userRef = FirebaseDatabase.getInstance().getReference("users");
         users = FirebaseAuth.getInstance().getCurrentUser();
-        mataKuliahRef = FirebaseDatabase.getInstance().getReference("courses");
+        mataKuliahRef = FirebaseDatabase.getInstance().getReference("user_course");
+        courseRef = FirebaseDatabase.getInstance().getReference("courses");
 
         //Recycler View
         mRecycleView = (RecyclerView) v.findViewById(R.id.MainRView);
@@ -112,9 +125,9 @@ public class OneFragment extends Fragment {
             }
         });
 
-        userRef.child(users.getUid()).child("courses").addValueEventListener(new ValueEventListener() {
+        mataKuliahRef.child(users.getUid()).addValueEventListener(new ValueEventListener() {
             @Override
-            public void onDataChange(final DataSnapshot dataSnapshot) {
+            public void onDataChange(DataSnapshot dataSnapshot) {
                 listMatkul.clear();
                 keys.clear();
                 mProgressBar.setVisibility(View.GONE);
@@ -124,10 +137,20 @@ public class OneFragment extends Fragment {
                         keys.add(idCourses);
 
                         Log.e("Anjae",keys.toString());
-                        mataKuliahRef.child(idCourses).addListenerForSingleValueEvent(new ValueEventListener() {
+                        courseRef.child(idCourses).addListenerForSingleValueEvent(new ValueEventListener() {
                             @Override
                             public void onDataChange(DataSnapshot dataSnapshot2) {
                                 MataKuliah matkul = dataSnapshot2.getValue(MataKuliah.class);
+
+                                // populate array for putextra to detailactivity
+                                namaMatkulPut.add(matkul.getName());
+                                bobotMatkulPut.add(matkul.getBobot());
+                                jamMatkulPut.add(matkul.getJam());
+                                dayMatkulPut.add(matkul.getDay());
+                                kelasMatkulPut.add(matkul.getKelas());
+
+
+
                                 listMatkul.add(matkul);
                                 mAdapter.notifyDataSetChanged();
                             }
@@ -139,23 +162,11 @@ public class OneFragment extends Fragment {
 
                             }
                         });
-
                     }
-                    Bundle bundle=new Bundle();
-                    bundle.putStringArrayList("keys", keys);
-                    //set Fragmentclass Arguments
-                    Fragment fragobj=new TwoFragment();
-
-                    fragobj.setArguments(bundle);
-                    FragmentManager fragmentManager = getFragmentManager();
-                    fragmentManager.beginTransaction().replace(R.id.frag2, fragobj).commitAllowingStateLoss();
-
-
-
                 }else{
+
                 }
             }
-
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
@@ -168,9 +179,16 @@ public class OneFragment extends Fragment {
             public void onClick(View view, int position) {
                 MataKuliah matkul = listMatkul.get(position);
                 Toast.makeText(getActivity(), keys.get(position) + " is selected!", Toast.LENGTH_SHORT).show();
+
                 Intent intent = new Intent(getActivity(), DetailActivity.class);
                 intent.putExtra("keys", keys.get(position));
+                intent.putExtra("namamatkul", namaMatkulPut.get(position));
+                intent.putExtra("jammatkul", jamMatkulPut.get(position));
+                intent.putExtra("daymatkul", dayMatkulPut.get(position));
+                intent.putExtra("bobotmatkul", bobotMatkulPut.get(position));
+                intent.putExtra("kelasmatkul", kelasMatkulPut.get(position));
                 startActivity(intent);
+
             }
 
             @Override
