@@ -1,63 +1,116 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
-    android:padding="6dip"
-    android:background="#eeeeee">
+    android:padding="10dip"
+    android:background="@color/white"
+    >
+
+
+    <TextView
+        android:id="@+id/kode"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignStart="@+id/first_line"
+        android:text="TextView"
+        android:layout_marginBottom="5dp"/>
 
     <TextView
         android:id="@+id/first_line"
-        android:layout_width="fill_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
         android:layout_alignWithParentIfMissing="true"
-        android:gravity="center_vertical"
+        android:layout_below="@+id/kode"
+        android:layout_marginStart="20dp"
+        android:layout_toEndOf="@+id/imageView2"
+        android:layout_toStartOf="@+id/imageView5"
+        android:gravity="left"
         android:text="Example application"
         android:textColor="#5e1b2c"
-        android:textSize="24dp" />
+        android:textSize="16dp" />
+
+
+    <ImageView
+        android:id="@+id/imageView6"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_alignStart="@+id/first_line"
+        android:layout_below="@+id/first_line"
+        app:srcCompat="@drawable/calendar"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="6dp"/>
 
     <TextView
         android:id="@+id/hari"
         android:layout_width="wrap_content"
         android:layout_height="26dip"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/first_line"
+        android:layout_alignBaseline="@+id/waktu"
+        android:layout_alignBottom="@+id/waktu"
+        android:layout_toEndOf="@+id/imageView6"
         android:ellipsize="marquee"
         android:singleLine="true"
         android:text="hari"
+        android:layout_marginLeft="8dp"
         android:textColor="#555555" />
 
-
-    <TextView
-        android:id="@+id/first_dosen"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/hari"
-        android:text="DOSEN 1"
-        android:ellipsize="marquee"
-        android:textColor="#555555"/>
-
-    <TextView
-        android:id="@+id/second_dosen"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/hari"
-        android:layout_marginStart="17dp"
-        android:layout_toEndOf="@+id/first_dosen"
-        android:text="DOSEN 2"
-        android:ellipsize="marquee"
-        android:textColor="#555555" />
 
     <TextView
         android:id="@+id/waktu"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/first_line"
-        android:layout_marginStart="12dp"
-        android:layout_toEndOf="@+id/hari"
+        android:layout_alignBottom="@+id/imageView6"
+        android:layout_toEndOf="@+id/textkelas"
         android:text="waktu"
         android:textColor="#555555" />
+
+    <TextView
+        android:id="@+id/kelas"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/textkelas"
+        android:layout_alignBottom="@+id/textkelas"
+        android:layout_marginStart="10dp"
+        android:layout_toEndOf="@+id/textkelas"
+        android:text="TextView" />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_alignParentStart="true"
+        android:layout_centerVertical="true"
+        app:srcCompat="@drawable/education"
+        tools:ignore="VectorDrawableCompat" />
+
+    <TextView
+        android:id="@+id/textkelas"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/hari"
+        android:layout_alignTop="@+id/imageView4"
+        android:text="Ruang :" />
+
+    <ImageView
+        android:id="@+id/imageView5"
+        android:layout_width="30dp"
+        android:layout_height="50dp"
+        android:layout_alignParentEnd="true"
+        android:layout_centerVertical="true"
+        app:srcCompat="@drawable/baseline_keyboard_arrow_right_black_24dp" />
+
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_alignStart="@+id/imageView6"
+        android:layout_below="@+id/imageView6"
+        android:layout_marginTop="5dp"
+        android:ellipsize="marquee"
+        app:srcCompat="@drawable/ic_location" />
+
+
 
 </RelativeLayout>

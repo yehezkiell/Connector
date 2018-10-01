@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_gravity="center"
-    android:padding="10dp">
+    android:padding="10dp"
+    android:layout_margin="20dp">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -15,6 +16,7 @@
         android:orientation="horizontal">
 
         <android.support.v7.widget.CardView
+            android:id="@+id/nilai_card"
             android:layout_width="150dp"
             android:layout_height="180dp"
             android:layout_margin="10dp">
@@ -28,7 +30,6 @@
             <ImageView
                 android:layout_width="64dp"
                 android:layout_height="64dp"
-
                 android:background="@drawable/circlebackgroundgreen"
                 android:src="@drawable/ic_assignment_returned_black_24dp"
                 android:padding="10dp"/>
@@ -36,15 +37,31 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="N I L A I"
-                    android:layout_marginTop="20dp"
-                    android:textSize="20dp"
+                    android:text="Nilai"
+                    android:textSize="20sp"
+                    android:layout_margin="5dp"
                     android:textStyle="bold"/>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#ededed"
+                    />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="Daftar Nilai Matakuliah"
+                    android:padding="5dp"
+                    android:textColor="@android:color/darker_gray"/>
+
             </LinearLayout>
 
         </android.support.v7.widget.CardView>
 
         <android.support.v7.widget.CardView
+            android:id="@+id/materi_card"
             android:layout_width="150dp"
             android:layout_height="180dp"
             android:layout_margin="10dp">
@@ -64,10 +81,25 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="M A T E R I"
-                    android:layout_marginTop="20dp"
-                    android:textSize="20dp"
+                    android:text="Materi"
+                    android:textSize="20sp"
+                    android:layout_margin="5dp"
+
                     android:textStyle="bold"/>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#ededed"
+                    />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="Daftar Materi Matakuliah"
+                    android:padding="5dp"
+                    android:textColor="@android:color/darker_gray"/>
             </LinearLayout>
 
 
@@ -83,6 +115,7 @@
         android:orientation="horizontal">
 
         <android.support.v7.widget.CardView
+            android:id="@+id/pengumuman_card"
             android:layout_width="150dp"
             android:layout_height="180dp"
             android:layout_margin="10dp">
@@ -104,17 +137,33 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="5dp"
-                    android:layout_marginTop="20dp"
-                    android:text="P E N G U M U M A N"
+                    android:text="Pengumuman"
                     android:textAlignment="center"
-                    android:textSize="20dp"
-                    android:textStyle="bold" />
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:layout_margin="5dp"/>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#ededed"
+                    />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="Daftar Pengumuman Matakuliah"
+                    android:padding="5dp"
+                    android:textColor="@android:color/darker_gray"/>
+
+
             </LinearLayout>
 
         </android.support.v7.widget.CardView>
 
         <android.support.v7.widget.CardView
+            android:id="@+id/peserta_card"
             android:layout_width="150dp"
             android:layout_height="180dp"
             android:layout_margin="10dp">
@@ -128,20 +177,35 @@
                 <ImageView
                     android:layout_width="64dp"
                     android:layout_height="64dp"
-
                     android:background="@drawable/circlebackgroundyellow"
                     android:src="@drawable/ic_supervisor_account_black_24dp"
-                    android:padding="10dp"/>
+                    android:padding="10dp"
+                    android:layout_marginTop="18dp"/>
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="P E S E R T A"
-                    android:layout_marginTop="20dp"
-                    android:textSize="20dp"
+                    android:text="Peserta"
+                    android:layout_margin="5dp"
+                    android:textSize="20sp"
                     android:textStyle="bold"/>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#ededed"
+                    />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="Daftar Peserta Matakuliah"
+                    android:padding="5dp"
+                    android:textColor="@android:color/darker_gray"/>
             </LinearLayout>
 
         </android.support.v7.widget.CardView>
     </LinearLayout>
+
 </LinearLayout>

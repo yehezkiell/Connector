@@ -10,6 +10,7 @@ public class GeneralItem extends ListItem {
     private DaftarPengumuman daftarPengumuman;
 
     public DaftarPengumuman getDaftarPengumuman() {
+
         return daftarPengumuman;
     }
 

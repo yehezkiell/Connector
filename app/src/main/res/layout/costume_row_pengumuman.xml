@@ -1,18 +1,52 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
-    android:background="#fdfcf3"
-    android:padding="6dip">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/white"
+    android:padding="10dip">
 
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_alignBottom="@+id/deskripsi_p"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/garis_pengumuman"
+        android:layout_marginStart="8dp"
+        app:srcCompat="@drawable/pengumuman_icon"
+        tools:ignore="VectorDrawableCompat" />
+
+    <TextView
+        android:id="@+id/tanggal_p"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ellipsize="marquee"
+        android:singleLine="true"
+        android:text="Selasa, 15-9-2018"
+        android:textColor="#555555"
+        android:textSize="12sp" />
+
+
+    <View
+        android:id="@+id/garis_pengumuman"
+        android:layout_width="match_parent"
+        android:layout_marginTop="5dp"
+        android:layout_below="@id/tanggal_p"
+        android:layout_height="0.5dp"
+        android:background="@android:color/black" />
 
     <TextView
         android:id="@+id/judul_p"
-        android:layout_width="fill_parent"
+        android:layout_marginTop="15dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignTop="@+id/garis"
+        android:layout_alignStart="@+id/deskripsi_p"
         android:layout_alignWithParentIfMissing="true"
+        android:layout_below="@+id/garis_pengumuman"
+        android:layout_toStartOf="@+id/enter_view"
         android:gravity="center_vertical"
         android:text="JUDUL TUGAS"
         android:textColor="#5e1b2c"
@@ -21,27 +55,30 @@
 
     <TextView
         android:id="@+id/deskripsi_p"
-        android:gravity="fill"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="35dp"
         android:layout_alignParentStart="true"
         android:layout_below="@+id/judul_p"
-        android:ellipsize="marquee"
-        android:baselineAligned="false"
+        android:layout_marginStart="50dp"
+
+        android:layout_toStartOf="@+id/enter_view"
+        android:ellipsize="end"
+        android:gravity="fill"
+        android:maxLines="3"
         android:text="Deskripsi pengumuman disini"
         android:textColor="#555555"
-        android:textSize="20sp" />
+        android:textSize="12sp" />
 
-    <TextView
-        android:id="@+id/tanggal_p"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/deskripsi_p"
-        android:ellipsize="marquee"
-        android:singleLine="true"
-        android:text="Selasa, 15-9-2018"
-        android:textColor="#555555"
-        android:textSize="15sp" />
+    <ImageView
+        android:id="@+id/enter_view"
+        android:layout_width="30dp"
+        android:layout_height="50dp"
+        android:layout_alignBottom="@+id/deskripsi_p"
+        android:layout_alignParentEnd="true"
+        android:layout_below="@+id/garis_pengumuman"
+        app:srcCompat="@drawable/baseline_keyboard_arrow_right_black_24dp" />
+
+
 
 
 

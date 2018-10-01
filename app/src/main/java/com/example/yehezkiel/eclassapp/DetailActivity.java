@@ -9,6 +9,7 @@ import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.app.AppCompatDelegate;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
@@ -25,7 +26,7 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.List;
 
-public class DetailActivity extends AppCompatActivity {
+public class DetailActivity extends AppCompatActivity implements View.OnClickListener {
 
     View v;
     Dialog myDialog;
@@ -41,6 +42,8 @@ public class DetailActivity extends AppCompatActivity {
     private List<ListDosen> listDosen = new ArrayList<>();
     private RecyclerView mRecyclerView;
     private RecyclerView.Adapter mAdapter;
+    private String keys;
+    private CardView mNilaiCard,mPesertaCard,mMateriCard,mPengumumanCard;
 
 
 
@@ -75,12 +78,25 @@ public class DetailActivity extends AppCompatActivity {
 
         //put extra
         Intent intent = getIntent();
-        final String keys = intent.getStringExtra("keys");
+        keys = intent.getStringExtra("keys");
         namaMatkulGet = intent.getStringExtra("namamatkul");
         dayMatkulGet = intent.getStringExtra("daymatkul");
         jamMatkulGet = intent.getStringExtra("jammatkul");
         bobotMatkulGet = intent.getStringExtra("bobotmatkul");
         kelasMatkulGet = intent.getStringExtra("kelasmatkul");
+
+
+        mPengumumanCard = (CardView) findViewById(R.id.pengumuman_card);
+        mNilaiCard = (CardView) findViewById(R.id.nilai_card);
+        mPesertaCard = (CardView) findViewById(R.id.peserta_card);
+        mMateriCard = (CardView) findViewById(R.id.materi_card);
+
+        mPengumumanCard.setOnClickListener(this);
+        mMateriCard.setOnClickListener(this);
+        mNilaiCard.setOnClickListener(this);
+        mPesertaCard.setOnClickListener(this);
+
+
 
 
 
@@ -191,7 +207,37 @@ public class DetailActivity extends AppCompatActivity {
         myDialog.show();
 
         };
+
+    @Override
+    public void onClick(View view) {
+        switch (view.getId()) {
+            case (R.id.nilai_card):
+                Intent intent = new Intent(DetailActivity.this, NilaiActivity.class);
+                intent.putExtra("keys", keys);
+                startActivity(intent);
+                break;
+            case (R.id.materi_card):
+                Intent intent2 = new Intent(DetailActivity.this, MateriActivity.class);
+                intent2.putExtra("keys", namaMatkulGet);
+                startActivity(intent2);
+                break;
+            case (R.id.peserta_card):
+                Intent intent3 = new Intent(DetailActivity.this, PesertaActivity.class);
+                intent3.putExtra("namaMatkul", namaMatkulGet);
+                intent3.putExtra("keys", keys);
+                startActivity(intent3);
+                break;
+            case (R.id.pengumuman_card):
+                Intent intent4 = new Intent(DetailActivity.this, PengumumanDetailActivity.class);
+                intent4.putExtra("namaMatkul", namaMatkulGet);
+                intent4.putExtra("keys", keys);
+                startActivity(intent4);
+                break;
+
+
+        }
     }
+}
 
 
 

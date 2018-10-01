@@ -5,41 +5,139 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context="com.example.yehezkiel.eclassapp.OneFragment">
 
+
+
+
+
+
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:background="#eceff1">
 
-        <ProgressBar
-            android:id="@+id/progressBar2"
-            style="?android:attr/progressBarStyle"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_gravity="center_horizontal"
-            android:visibility="visible"
-            tools:layout_editor_absoluteX="0dp"
-            tools:layout_editor_absoluteY="304dp" />
+
+    <com.facebook.shimmer.ShimmerFrameLayout
+        android:id="@+id/shimmer_view_container"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/MainRView"
-            android:padding="6dp"
+            android:padding="10dp"
             android:scrollbarStyle="outsideOverlay"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginBottom="2dp"
-            android:layout_marginEnd="6dp"
-            android:layout_marginStart="6dp"
-            android:layout_marginTop="2dp"
             android:clipToPadding="false"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
-
-
         </android.support.v7.widget.RecyclerView>
 
+    </com.facebook.shimmer.ShimmerFrameLayout>
+
+
+
+
     </LinearLayout>
+
+
+    <ProgressBar
+        android:id="@+id/progressBar2"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_marginTop="30dp"
+        android:layout_gravity="center"
+        android:visibility="visible"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="304dp"
+        android:indeterminate="true"
+        android:indeterminateTintMode="src_atop"
+        android:indeterminateTint="@color/black"
+        />
+
+    <com.bartoszlipinski.recyclerviewheader2.RecyclerViewHeader
+        android:id="@+id/header2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal|top"
+        android:background="@color/colorPrimaryDark">
+
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="15dp"
+            >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="18dp"
+                android:text="Total SKS : "
+                android:textColor="@color/white"
+                android:textSize="16dp" />
+
+            <TextView
+                android:id="@+id/bobot"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="5 "
+                android:layout_marginTop="18dp"
+                android:layout_marginRight="5dp"
+                android:textColor="@color/white"
+                android:textSize="16dp"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="SKS"
+                android:layout_marginTop="18dp"
+                android:textColor="@color/white"
+                android:textSize="16dp"
+                />
+
+            <View
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="28dp"
+                android:layout_marginTop="10dp"
+                android:layout_width="1dp"
+                android:layout_height="40dp"
+                android:background="@color/white" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Total Matkul : "
+                android:layout_marginTop="18dp"
+                android:textColor="@color/white"
+                android:textSize="16dp"
+                />
+
+            <TextView
+                android:id="@+id/total_matkul"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="6"
+                android:layout_marginTop="18dp"
+                android:textColor="@color/white"
+                android:textSize="16dp"
+                />
+
+
+        </LinearLayout>
+
+
+    </com.bartoszlipinski.recyclerviewheader2.RecyclerViewHeader>
+
+
+
 
 
 </FrameLayout>

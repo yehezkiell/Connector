@@ -1,16 +1,17 @@
 package com.example.yehezkiel.eclassapp;
 
+import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
+import com.bartoszlipinski.recyclerviewheader2.RecyclerViewHeader;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -18,6 +19,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.thekhaeng.recyclerviewmargin.LayoutMarginDecoration;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -38,7 +40,20 @@ public class ThreeFragment extends Fragment {
     private FirebaseUser users;
     private DatabaseReference mataKuliahRef;
     private DatabaseReference daftarPengumumanRef;
+    private DatabaseReference pengumumanRef;
+
+    private boolean loaded;
     private SwipeRefreshLayout swipeLayout;
+    private int bobot;
+    private TextView mJumlahPengumuman;
+
+    //send extra
+    private ArrayList<String> namaMatkulPut = new ArrayList<>();
+    private ArrayList<String> namaPengumumanPut = new ArrayList<>();
+    private ArrayList<String> judulPengumumanPut = new ArrayList<>();
+    private ArrayList<String> tanggalPengumumanPut = new ArrayList<>();
+    private ArrayList<String> deskripsiPengumumanPut = new ArrayList<>();
+
 
 
 
@@ -67,28 +82,34 @@ public class ThreeFragment extends Fragment {
         users = FirebaseAuth.getInstance().getCurrentUser();
         mataKuliahRef = FirebaseDatabase.getInstance().getReference("courses");
         daftarPengumumanRef = FirebaseDatabase.getInstance().getReference("pengumuman");
+        pengumumanRef = FirebaseDatabase.getInstance().getReference("pengumuman_course");
+
+//        swipeLayout = (SwipeRefreshLayout) v.findViewById(R.id.swiperefresh);
+
+//        swipeLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+//            @Override
+//            public void onRefresh() {
+//                new Handler().postDelayed(new Runnable() {
+//
+//                    @Override public void run() {
+//                        swipeLayout.setRefreshing(false);
+////                        listPengumuman.clear();
+////                        consolidatedList.clear();
+////                        LoadDataPengumuman();
+//
+//                    }
+//                    private void onLoaded() {
+//                        swipeLayout.setEnabled(true);
+//                        swipeLayout.setRefreshing(false);
+//                    }
+//
+//                }, 500);
+//            }
+//        });
 
 
-        swipeLayout = (SwipeRefreshLayout) v.findViewById(R.id.swiperefresh);
 
-        swipeLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
-            @Override
-            public void onRefresh() {
-                new Handler().postDelayed(new Runnable() {
-
-                    @Override public void run() {
-                        swipeLayout.setRefreshing(false);
-                        adapter.notifyDataSetChanged();
-
-                    }
-
-                }, 2000);
-            }
-        });
-
-
-        mAuth = FirebaseAuth.getInstance();
-
+        mJumlahPengumuman = (TextView) v.findViewById(R.id.jumlah_pengumuman);
         mRecyclerView = (RecyclerView) v.findViewById(R.id.PengumumanRView);
         mRecyclerView.setHasFixedSize(true);
 
@@ -96,29 +117,126 @@ public class ThreeFragment extends Fragment {
         LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity().getApplicationContext());
         layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         mRecyclerView.setLayoutManager(layoutManager);
+        RecyclerViewHeader header = (RecyclerViewHeader) v.findViewById(R.id.header3);
+        header.attachTo(mRecyclerView);
         mRecyclerView.setAdapter(adapter);
+        mRecyclerView.addItemDecoration(new LayoutMarginDecoration(1,15));
 
 
-        userRef.child(users.getUid()).addValueEventListener(new ValueEventListener() {
+        LoadDataPengumuman();
+
+        mRecyclerView.addOnItemTouchListener(new RecyclerTouchListener(getContext(), mRecyclerView, new RecyclerTouchListener.ClickListener() {
             @Override
-            public void onDataChange(final DataSnapshot dataSnapshot) {
+            public void onClick(View view, int position) {
 
-                if(dataSnapshot.exists()){
-                    long datacount = dataSnapshot.getChildrenCount();
-                    int i = 0;
-                    for(DataSnapshot dataHasil : dataSnapshot.getChildren()){
-                        final String idCourse =  dataHasil.getKey();
-                        obj3.add(idCourse);
-                        Log.e("obj3", obj3.toString());
-                        if(datacount-1 == i){
-                            queryObj3(obj3);
-                        }
-                        i++;
-                    }
-                }else {
+                if(consolidatedList.size()-1 >= position)
+                {
+                    GeneralItem generalItem   = (GeneralItem) consolidatedList.get(position);
+                    Intent intent = new Intent(getActivity(), DetailPengumuman.class);
+                    intent.putExtra("flag", "pengumuman");
+
+                    intent.putExtra("getnama", generalItem.getDaftarPengumuman().getNama_p());
+
+                    intent.putExtra("tanggalpengumuman", generalItem.getDaftarPengumuman().getTanggal_peng());
+                    intent.putExtra("judulpengumuman", generalItem.getDaftarPengumuman().getJudul());
+                    intent.putExtra("deskripsipengumuman", generalItem.getDaftarPengumuman().getDeskripsi());
+                    startActivity(intent);
 
                 }
 
+
+
+            }
+
+            @Override
+            public void onLongClick(View view, int position) {
+
+            }
+        }));
+
+        return v;
+    }
+
+
+
+    private void LoadDataPengumuman(){
+
+        userRef.child(users.getUid()).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                loaded=false;
+                listPengumuman.clear();
+                consolidatedList.clear();
+                final ArrayList<Integer> test1 = new ArrayList<>();
+                final ArrayList<Integer> test2 = new ArrayList<>();
+                if (dataSnapshot.exists()){
+                    for(final DataSnapshot dataHasil : dataSnapshot.getChildren()){
+                        final String idCourses = dataHasil.getKey();
+                        final String name = (String) dataSnapshot.child(idCourses).getValue();
+                        pengumumanRef.child(idCourses).addValueEventListener(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(final DataSnapshot dataSnapshot2) {
+                                if(dataSnapshot2.exists()) {
+                                    for (DataSnapshot dataHasil2 : dataSnapshot2.getChildren()) {
+                                        test1.add(1);
+                                        final String idTugas = dataHasil2.getKey();
+                                        daftarPengumumanRef.child(idTugas).addListenerForSingleValueEvent(new ValueEventListener() {
+                                            @Override
+                                            public void onDataChange(DataSnapshot dataSnapshot3) {
+
+                                                if(dataSnapshot3.exists()){
+                                                    DaftarPengumuman pengumuman = new DaftarPengumuman();
+                                                    pengumuman = dataSnapshot3.getValue(DaftarPengumuman.class);
+                                                    pengumuman.setNama_p(name);
+                                                    listPengumuman.add(pengumuman);
+                                                    test2.add(1);
+                                                    bobot= bobot+1;
+                                                    mJumlahPengumuman.setText(""+bobot);
+
+
+                                                    if (test1.size() == test2.size()) {
+                                                        hashMap();
+                                                        bobot=0;
+                                                        if(loaded){
+                                                            test2.clear();
+                                                            test2.clear();
+
+                                                            LoadDataPengumuman();
+                                                        }
+                                                        loaded=true;
+                                                    }
+
+                                                }else{
+                                                    test2.add(1);
+
+                                                }
+                                            }
+
+                                            @Override
+                                            public void onCancelled(DatabaseError databaseError) {
+
+                                            }
+                                        });
+
+                                    }//end of loop for datasnapshot 2
+                                }else{
+                                }
+                            }
+
+
+
+                            @Override
+                            public void onCancelled(DatabaseError databaseError) {
+
+                            }
+                        });
+
+
+
+                    }// end of looping datasnapshot1
+                }else{
+
+                }
             }
 
             @Override
@@ -126,74 +244,7 @@ public class ThreeFragment extends Fragment {
 
             }
         });
-
-
-        return v;
     }
-
-
-
-
-
-    public void queryObj3(final ArrayList<String> obj3){
-        final ArrayList<Integer> test1 = new ArrayList<>();
-        final ArrayList<Integer> test2 = new ArrayList<>();
-        for(int j = 0 ; j<obj3.size() ;j++){
-            int k = 0;
-
-            mataKuliahRef.child(obj3.get(j)).addValueEventListener(new ValueEventListener() {
-                @Override
-                public void onDataChange(final DataSnapshot dataSnapshot) {
-                    if (dataSnapshot.exists()) {
-                        listPengumuman.clear();
-                        final String name = (String) dataSnapshot.child("name").getValue();
-                        if (dataSnapshot.hasChild("pengumuman")) {
-                            for (DataSnapshot idKeyPeng : dataSnapshot.child("pengumuman").getChildren()) {
-                                test1.add(0);
-                                daftarPengumumanRef.child(idKeyPeng.getKey()).addListenerForSingleValueEvent(new ValueEventListener() {
-
-                                    @Override
-                                    public void onDataChange(DataSnapshot dataSnapshot2) {
-                                        DaftarPengumuman pengumuman = new DaftarPengumuman();
-                                        pengumuman = dataSnapshot2.getValue(DaftarPengumuman.class);
-                                        pengumuman.setNama_p(name);
-                                        listPengumuman.add(pengumuman);
-                                        adapter.notifyDataSetChanged();
-                                        test2.add(0);
-
-                                        if (test1.size() == test2.size()) {
-                                            hashMap();
-                                        }
-
-                                    }
-
-                                    @Override
-                                    public void onCancelled(DatabaseError databaseError) {
-
-                                    }
-                                });
-                            }//end of for
-
-
-                        }//end of has child
-                        else {
-                        }
-
-
-                    }//end of if exist
-
-
-                }//end of first ondatachange
-
-
-                @Override
-                public void onCancelled(DatabaseError databaseError) {
-
-                }
-            });
-        }
-    }
-
 
 
     private HashMap<String, List<DaftarPengumuman>> groupDataIntoHashMap(List<DaftarPengumuman> listOfDaftarPengumuman) {
@@ -229,12 +280,15 @@ public class ThreeFragment extends Fragment {
             consolidatedList.add(nameItem);
 
 
+
             for (DaftarPengumuman daftarPengumuman : groupedHashMap.get(nama_p)) {
                 GeneralItem generalItem = new GeneralItem();
                 generalItem.setDaftarPengumuman(daftarPengumuman);//setBookingDataTabs(bookingDataTabs);
                 consolidatedList.add(generalItem);
             }
         }
+        adapter.notifyDataSetChanged();
+
     }
 
 

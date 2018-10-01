@@ -18,7 +18,7 @@ public class myAdapter extends RecyclerView.Adapter<myAdapter.MyViewHolder> {
 
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
-        public TextView judul, deskripsi,dosen1,dosen2,day,jam;
+        public TextView judul, deskripsi,kelas,day,jam,kode;
 
 
         public MyViewHolder(View view) {
@@ -26,8 +26,8 @@ public class myAdapter extends RecyclerView.Adapter<myAdapter.MyViewHolder> {
             judul = (TextView) view.findViewById(R.id.first_line);
             day = (TextView) view.findViewById(R.id.hari);
             jam = (TextView) view.findViewById(R.id.waktu);
-            dosen1 = (TextView) view.findViewById(R.id.first_dosen);
-            dosen2 = (TextView) view.findViewById(R.id.second_dosen);
+            kelas = (TextView) view.findViewById(R.id.kelas);
+            kode = (TextView) view.findViewById(R.id.kode);
 
         }
 
@@ -49,11 +49,10 @@ public class myAdapter extends RecyclerView.Adapter<myAdapter.MyViewHolder> {
     public void onBindViewHolder(MyViewHolder holder, int position) {
         MataKuliah matkul = listMatkul.get(position);
         holder.judul.setText(matkul.getName());
-        holder.dosen1.setText(matkul.getDosen_1());
-        holder.dosen2.setText(matkul.getDosen_2());
         holder.day.setText(matkul.getDay());
         holder.jam.setText(matkul.getJam());
-
+        holder.kelas.setText(matkul.getKelas());
+        holder.kode.setText(matkul.getKode());
     }
 
     @Override

@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.example.yehezkiel.eclassapp.MateriActivity">
+
+
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/activity_vertical_margin"
+        android:layout_marginBottom="@dimen/activity_vertical_margin"
+        android:layout_marginLeft="@dimen/activity_horizontal_margin"
+        android:layout_marginRight="@dimen/activity_horizontal_margin"
+        android:background="@color/colorPrimaryDark"
+        android:padding="5dp">
+
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <com.bartoszlipinski.recyclerviewheader2.RecyclerViewHeader
+                android:id="@+id/header2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal|top"
+                android:background="@color/colorPrimaryDark">
+
+                <RelativeLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/recyclerviewborder">
+
+                    <TextView
+                        android:id="@+id/nim_nilai"
+                        android:layout_width="84dp"
+                        android:layout_height="wrap_content"
+                        android:layout_alignWithParentIfMissing="true"
+                        android:layout_centerVertical="true"
+                        android:layout_toEndOf="@+id/view_2"
+                        android:padding="10dp"
+                        android:text="NIM"
+                        android:textAlignment="center"
+                        android:textSize="14sp" />
+
+                    <View
+
+                        android:id="@+id/view"
+                        android:layout_width="1dp"
+                        android:layout_height="60dp"
+                        android:layout_alignParentTop="true"
+                        android:layout_toEndOf="@+id/nim_nilai"
+                        android:background="#c0c0c0" />
+
+
+                    <TextView
+                        android:id="@+id/nomer"
+                        android:layout_width="30dp"
+                        android:layout_height="55dp"
+                        android:layout_alignParentStart="true"
+                        android:layout_centerVertical="true"
+                        android:padding="10dp"
+                        android:text="No"
+                        android:textSize="14sp" />
+
+                    <View
+
+                        android:id="@+id/view_2"
+                        android:layout_width="1dp"
+                        android:layout_height="60dp"
+                        android:layout_alignParentTop="true"
+                        android:layout_toEndOf="@+id/nomer"
+                        android:background="#c0c0c0" />
+
+                    <TextView
+                        android:id="@+id/nama_nilai_detail"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"
+                        android:layout_toEndOf="@+id/view"
+                        android:padding="10dip"
+                        android:text="Nama"
+                        android:textAlignment="center"
+                        android:textSize="14sp" />
+
+                </RelativeLayout>
+
+            </com.bartoszlipinski.recyclerviewheader2.RecyclerViewHeader>
+
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/recycler_peserta"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:layout_editor_absoluteX="8dp"
+                tools:layout_editor_absoluteY="56dp" />
+
+
+        </LinearLayout>
+
+
+
+    </android.support.v7.widget.CardView>
+
+
+</LinearLayout>

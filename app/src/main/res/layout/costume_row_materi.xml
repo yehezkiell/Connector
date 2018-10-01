@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:padding="10dip"
+    android:background="@color/white"
+    >
+
+
+    <TextView
+        android:id="@+id/judul_materi"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignWithParentIfMissing="true"
+        android:layout_marginStart="18dp"
+        android:layout_toEndOf="@+id/imageView6"
+        android:gravity="left"
+        android:text="Example application "
+        android:textColor="#5e1b2c"
+        android:textSize="16dp" />
+
+
+    <ImageView
+        android:id="@+id/imageView6"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_alignParentStart="true"
+        android:layout_centerVertical="true"
+        app:srcCompat="@drawable/ic_office" />
+
+
+    <TextView
+        android:id="@+id/pertemuan"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/imageView4"
+        android:layout_marginStart="8dp"
+        android:layout_toEndOf="@+id/imageView4"
+        android:text="Pertemuan" />
+
+    <ImageView
+        android:id="@+id/imageView5"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_alignParentEnd="true"
+        android:layout_centerVertical="true"
+        app:srcCompat="@drawable/ic_download" />
+
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_alignStart="@+id/judul_materi"
+        android:layout_below="@+id/imageView6"
+        android:layout_marginStart="11dp"
+        android:ellipsize="marquee"
+        app:srcCompat="@drawable/ic_new_calendar" />
+
+
+
+</RelativeLayout>

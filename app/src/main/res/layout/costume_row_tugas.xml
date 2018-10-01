@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
-    android:background="#eeeeee"
-    android:padding="6dip">
+    android:background="@color/white"
+    android:padding="10dip">
 
     <TextView
         android:id="@+id/tanggal_tugas"
@@ -14,21 +16,27 @@
         android:text="@string/_19_sep_2018"
         android:textSize="12sp"/>
 
-    <View android:layout_width="fill_parent"
-        android:layout_height="1dp"
-        android:background="#FFFFFF"
-        android:layout_below="@id/tanggal_tugas"
+
+    <View
+        android:id="@+id/garis"
+        android:layout_width="match_parent"
         android:layout_marginTop="5dp"
-        android:id="@+id/garis"/>
+        android:layout_below="@id/tanggal_tugas"
+        android:layout_height="0.5dp"
+        android:background="@android:color/black" />
+
+
 
     <TextView
         android:id="@+id/judul_p"
-        android:layout_width="fill_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
+        android:layout_alignTop="@+id/garis"
         android:layout_alignWithParentIfMissing="true"
-        android:layout_below="@+id/garis"
-        android:gravity="center_vertical"
+        android:layout_marginStart="23dp"
+        android:layout_toEndOf="@+id/imageView3"
+        android:layout_marginTop="15dp"
+        android:layout_toStartOf="@+id/enter_view"
         android:text="Example application"
         android:textColor="#5e1b2c"
         android:textSize="20sp"
@@ -37,40 +45,35 @@
     <TextView
         android:id="@+id/deskripsi_p"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
+        android:layout_height="35dp"
+        android:layout_alignStart="@+id/judul_p"
         android:layout_below="@+id/judul_p"
-        android:ellipsize="marquee"
-        android:singleLine="true"
+        android:layout_toStartOf="@+id/enter_view"
+
+        android:ellipsize="end"
+        android:gravity="fill"
         android:text="Judul Tugas"
-        android:textColor="#555555"
-        android:textSize="20sp" />
+        android:textSize="12sp" />
 
-    <TextView
-        android:id="@+id/tanggal_p"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/deskripsi_p"
-        android:ellipsize="marquee"
-        android:singleLine="true"
-        android:text="Deskripsi Tugas"
-        android:textColor="#555555"
-        android:textSize="15sp" />
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_alignBottom="@+id/deskripsi_p"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/tanggal_tugas"
+        android:layout_marginStart="15dp"
+        app:srcCompat="@drawable/ic_clipboard"
+        tools:ignore="VectorDrawableCompat" />
 
-    <View android:layout_width="fill_parent"
-        android:layout_height="1dp"
-        android:background="#FFFFFF"
-        android:layout_below="@id/tanggal_p"
-        android:layout_marginTop="5dp"
-        android:id="@+id/garis2"/>
-
-    <TextView
-        android:id="@+id/tanggal_kumpul"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Tanggal kumpul"
-        android:layout_below="@+id/garis2"
-        android:textSize="12sp"/>
+    <ImageView
+        android:id="@+id/enter_view"
+        android:layout_width="30dp"
+        android:layout_height="50dp"
+        android:layout_alignBottom="@+id/deskripsi_p"
+        android:layout_alignEnd="@+id/garis"
+        android:layout_alignTop="@+id/judul_p"
+        app:srcCompat="@drawable/baseline_keyboard_arrow_right_black_24dp" />
 
 
 </RelativeLayout>

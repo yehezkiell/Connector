@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="fill_parent"
+    android:layout_height="90dp"
+    android:background="@color/white"
+    android:padding="10dip">
+
+
+    <TextView
+        android:id="@+id/nama_nilai"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignWithParentIfMissing="true"
+        android:layout_toStartOf="@+id/view_2"
+        android:gravity="center_vertical"
+        android:text="Pemrogaman Web Tugas 1"
+        android:textColor="#5e1b2c"
+        android:textSize="16sp"
+        android:textStyle="bold" />
+
+    <View
+
+        android:id="@+id/view_2"
+        android:layout_width="0.5dp"
+        android:layout_height="match_parent"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginEnd="14dp"
+        android:layout_toStartOf="@+id/imageView10"
+        android:background="#c0c0c0" />
+
+    <TextView
+        android:id="@+id/bobot_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/imageView8"
+        android:textAlignment="center"
+        android:layout_marginTop="0.5dp"
+        android:ellipsize="end"
+        android:gravity="center"
+        android:text="Bobot"
+        android:textColor="#555555"
+        android:textSize="8sp" />
+
+    <ImageView
+        android:id="@+id/imageView8"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_alignEnd="@+id/bobot_layout"
+        android:layout_below="@+id/nama_nilai"
+        android:layout_marginTop="8dp"
+        app:srcCompat="@drawable/percentage" />
+
+    <TextView
+        android:id="@+id/bobot_nilai"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/imageView8"
+        android:layout_alignTop="@+id/percent"
+        android:layout_marginStart="8dp"
+        android:layout_toEndOf="@+id/bobot_layout"
+        android:text="5.00" />
+
+    <TextView
+        android:id="@+id/percent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/imageView8"
+        android:layout_toEndOf="@+id/bobot_nilai"
+        android:text="%"
+        android:layout_marginStart="2dp"/>
+
+    <ImageView
+        android:id="@+id/imageView9"
+        android:layout_width="23dp"
+        android:layout_height="23dp"
+        android:layout_alignBottom="@+id/percent"
+        android:layout_marginStart="9dp"
+        android:layout_toEndOf="@+id/percent"
+        app:srcCompat="@drawable/equality" />
+
+    <TextView
+        android:id="@+id/skala_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/imageView9"
+        android:layout_alignStart="@+id/imageView9"
+        android:layout_below="@+id/imageView9"
+        android:layout_marginTop="1dp"
+        android:ellipsize="end"
+        android:gravity="center"
+        android:text="Skala"
+        android:textAlignment="center"
+        android:textColor="#555555"
+        android:textSize="8sp" />
+
+    <TextView
+        android:id="@+id/skala_nilai"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/skala_layout"
+        android:layout_marginStart="8dp"
+        android:layout_toEndOf="@+id/imageView9"
+        android:text="100.00" />
+
+    <ImageView
+        android:id="@+id/imageView10"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_below="@+id/nama_nilai"
+        android:layout_toStartOf="@+id/nilai_nilai"
+        app:srcCompat="@drawable/score" />
+
+    <TextView
+        android:id="@+id/nilai_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_below="@+id/imageView10"
+        android:layout_toStartOf="@+id/nilai_nilai"
+        android:ellipsize="end"
+        android:text="Nilai"
+        android:textAlignment="center"
+        android:textColor="#555555"
+        android:textSize="12sp" />
+
+    <TextView
+        android:id="@+id/nilai_nilai"
+        android:layout_width="90dp"
+        android:layout_height="50dp"
+        android:layout_alignBottom="@+id/nilai_layout"
+        android:layout_alignParentEnd="true"
+        android:layout_below="@+id/information"
+        android:text="89.70"
+        android:padding="15dp"
+        android:textAlignment="center"
+        android:textSize="18sp" />
+
+    <ImageView
+        android:id="@+id/information"
+        android:layout_width="15dp"
+        android:layout_height="15dp"
+        android:layout_alignEnd="@+id/nilai_nilai"
+        android:layout_alignParentTop="true"
+        app:srcCompat="@drawable/information" />
+
+
+</RelativeLayout>

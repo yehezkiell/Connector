@@ -1,19 +1,83 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/frag2"
-    android:layout_width="match_parent"
+    android:layout_width="fill_parent"
     android:layout_height="match_parent"
     tools:context="com.example.yehezkiel.eclassapp.TwoFragment">
 
+
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="#eceff1">
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/TugasRView"
+            android:padding="10dp"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent"
+            android:clipToPadding="false"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            />
 
     </LinearLayout>
+
+
+
+
+            <com.bartoszlipinski.recyclerviewheader2.RecyclerViewHeader
+                android:id="@+id/header"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal|top"
+                android:background="@color/colorPrimaryDark">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Jumlah Tugas :  "
+                    android:layout_marginTop="20dp"
+                    android:layout_marginBottom="23dp"
+                    android:layout_marginLeft="25dp"
+                    android:textColor="@color/white"
+                    android:textSize="16dp"
+                    />
+
+                <TextView
+                    android:id="@+id/jumlah_tugas"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="6  "
+                    android:layout_marginTop="20dp"
+                    android:layout_marginBottom="23dp"
+                    android:textColor="@color/white"
+                    android:textSize="16dp"
+                    />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="  Butir"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginBottom="23dp"
+                        android:textColor="@color/white"
+                        android:textSize="16dp"
+                        />
+
+                </LinearLayout>
+
+            </com.bartoszlipinski.recyclerviewheader2.RecyclerViewHeader>
+
+
+
 </FrameLayout>

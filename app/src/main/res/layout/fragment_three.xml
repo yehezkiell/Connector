@@ -4,23 +4,82 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.example.yehezkiel.eclassapp.ThreeFragment">
-    
-    <android.support.v4.widget.SwipeRefreshLayout
-        android:id="@+id/swiperefresh"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
 
 
+
+    <FrameLayout
+        android:id="@+id/container_three"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#eceff1">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:background="#eceff1">
 
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/PengumumanRView"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/PengumumanRView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+
+
 
     </LinearLayout>
-    </android.support.v4.widget.SwipeRefreshLayout>
+
+
+
+    <com.bartoszlipinski.recyclerviewheader2.RecyclerViewHeader
+        android:id="@+id/header3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal|top"
+        android:background="@color/colorPrimaryDark">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Jumlah Pengumuman :  "
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="23dp"
+                android:layout_marginLeft="25dp"
+                android:textColor="@color/white"
+                android:textSize="16dp"
+                />
+
+            <TextView
+                android:id="@+id/jumlah_pengumuman"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="6  "
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="23dp"
+                android:textColor="@color/white"
+                android:textSize="16dp"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="  Butir"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="23dp"
+                android:textColor="@color/white"
+                android:textSize="16dp"
+                />
+
+        </LinearLayout>
+
+    </com.bartoszlipinski.recyclerviewheader2.RecyclerViewHeader>
+
+    </FrameLayout>
+
 </FrameLayout>

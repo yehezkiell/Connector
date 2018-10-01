@@ -52,14 +52,14 @@
                 app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
 
             <ImageButton
-                android:onClick="showPopup"
                 android:id="@+id/imageButton2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="right"
-                android:layout_margin="20dp"
+                android:layout_margin="15dp"
                 android:background="@android:color/transparent"
-                app:srcCompat="@mipmap/baseline_info_white_16dp" />
+                android:onClick="showPopup"
+                app:srcCompat="@drawable/baseline_info_white_24dp" />
 
 
         </android.support.design.widget.CollapsingToolbarLayout>

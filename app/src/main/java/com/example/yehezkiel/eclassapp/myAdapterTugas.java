@@ -19,14 +19,12 @@ public class myAdapterTugas extends RecyclerView.Adapter<myAdapterTugas.MyViewHo
 
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
-        public TextView tanggal_tugas,judul_tugas,deskripsi_tugas,tanggal_kumpul,nama_matkul;
+        public TextView tanggal_tugas,judul_tugas,tanggal_kumpul,nama_matkul;
 
         public MyViewHolder(View view) {
             super(view);
             nama_matkul = (TextView) view.findViewById(R.id.judul_p);
             judul_tugas = (TextView) view.findViewById(R.id.deskripsi_p);
-            deskripsi_tugas = (TextView) view.findViewById(R.id.tanggal_p);
-            tanggal_kumpul = (TextView) view.findViewById(R.id.tanggal_kumpul);
             tanggal_tugas = (TextView) view.findViewById(R.id.tanggal_tugas);
         }
     }
@@ -48,8 +46,6 @@ public class myAdapterTugas extends RecyclerView.Adapter<myAdapterTugas.MyViewHo
         DaftarTugas tugas = listTugas.get(position);
         holder.nama_matkul.setText(tugas.getNama_tugas());
         holder.judul_tugas.setText(tugas.getJudul_tugas());
-        holder.deskripsi_tugas.setText(tugas.getDeskripsi_tugas());
-        holder.tanggal_kumpul.setText(tugas.getTanggal_kumpul());
         holder.tanggal_tugas.setText(tugas.getTanggal_tugas());
     }
 

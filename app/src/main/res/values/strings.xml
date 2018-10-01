@@ -13,6 +13,8 @@
     <string name="tugas">Tugas</string>
     <string name="pengumuman">Pengumuman</string>
     <string name="title_activity_new_detai">NewDetaiActivity</string>
+    <string name="title_activity_home">HomeActivity</string>
+    <string name="title_activity_nilai_detail">NilaiDetailActivity</string>
 
 
 </resources>

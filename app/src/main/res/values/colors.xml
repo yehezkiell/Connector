@@ -11,6 +11,17 @@
     <color name="indigo">#000051</color>
     <color name="deeporange">#ffc1e3</color>
     <color name="pink">#c7a4ff</color>
+    <color name="transparent">#144</color>
+    <color name="black">#000000</color>
+    <color name="icon_enabled">#FFFFFFFF</color>
+    <color name="icon_disabled">#FF63727B</color>
+    <color name="background_color">#eceff1</color>
+
+
+
+
+
+
 
 
 

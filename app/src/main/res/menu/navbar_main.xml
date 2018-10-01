@@ -1,14 +1,49 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:title="General">
+        <menu>
+            <group android:checkableBehavior="single">
+
+    <item android:id="@+id/beranda"
+        android:title="Beranda"
+        android:checkable="true"
+        android:icon="@drawable/baseline_home_black_24dp"></item>
+
     <item android:id="@+id/tugas"
         android:title="Tugas"
+        android:checkable="true"
         android:icon="@mipmap/ic_assignment_late_black_24dp"></item>
 
-    <item android:id="@+id/nilai"
-        android:title="Nilai"
-        android:icon="@mipmap/ic_assessment_black_24dp"></item>
+    <item android:id="@+id/pengumuman"
+        android:title="Pengumuman"
+        android:checkable="true"
+        android:icon="@drawable/ic_turn_notifications_on_button"></item>
+
+                <item android:id="@+id/materi"
+                    android:title="Materi"
+                    android:checkable="true"
+
+                    android:icon="@drawable/ic_book_download_interface_symbol"></item>
+
+            </group>
+        </menu>
+
+    </item>
+
+
+    <item android:title="Other">
+        <menu>
+            <group android:checkableBehavior="single">
+
 
     <item android:id="@+id/logout_menu"
         android:title="Logout"
-        android:icon="@mipmap/ic_exit_to_app_black_24dp"></item>
+        android:checkable="true"
+
+        android:icon="@drawable/ic_logout"></item>
+            </group>
+        </menu>
+    </item>
+
 </menu>

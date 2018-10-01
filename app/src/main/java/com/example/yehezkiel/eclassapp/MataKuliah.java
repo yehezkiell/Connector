@@ -14,14 +14,18 @@ public class MataKuliah {
     private String jam;
     private String key;
     private String kelas;
-    private String bobot;
+    private int bobot;
+    private String kode;
 
-    public MataKuliah(String name, String dosen_1, String dosen_2, String day, String jam) {
+
+    public MataKuliah(String name, String dosen_1, String dosen_2, String day, String jam,String kelas,String kode) {
         this.name = name;
         this.dosen_1 = dosen_1;
         this.dosen_2 = dosen_2;
         this.day = day;
         this.jam = jam;
+        this.kelas = kelas;
+        this.kode = kode;
 
     }
 
@@ -31,6 +35,14 @@ public class MataKuliah {
     }
 
 
+    public String getKode() {
+        return kode;
+    }
+
+    public void setKode(String kode) {
+        this.kode = kode;
+    }
+
     public String getKelas() {
         return kelas;
     }
@@ -39,14 +51,13 @@ public class MataKuliah {
         this.kelas = kelas;
     }
 
-    public String getBobot() {
+    public int getBobot() {
         return bobot;
     }
 
-    public void setBobot(String bobot) {
+    public void setBobot(int bobot) {
         this.bobot = bobot;
     }
-
 
     public String getName() {
         return name;

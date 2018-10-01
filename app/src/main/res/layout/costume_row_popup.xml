@@ -2,13 +2,13 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:padding="6dip"
-    android:background="#eeeeee">
+    android:padding="5dip"
+    android:background="@color/white">
 
     <RelativeLayout
         android:layout_width="113dp"
         android:layout_height="75dp"
-        android:background="#81b9bf">
+        android:background="@color/white">
 
         <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
             android:id="@+id/gambar_dosen_1"
