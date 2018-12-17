@@ -1,4 +1,4 @@
-# Connector
+<h1>Connector</h1>
 
 
 
@@ -7,21 +7,19 @@
 This is an Android Application for Duta Wacana Christian University Management Class. I created this for my last project in college, this app actually have a website but it doesnt connect each other. Im using firebase for the backend and pure java in front end.
 
 
-<img src="https://i.imgur.com/5pEbAWe.png" width="150"> <img src="https://i.imgur.com/OcPBSBv.png" width="150"> <img src="https://i.imgur.com/jdRlgva.png" width="150"> <img src="https://i.imgur.com/3V19oX3.png" width="150"> <img src="https://i.imgur.com/vLPPoSy.png" width="150">
+<img src="https://i.imgur.com/5pEbAWe.png" width="150"> <img src="https://i.imgur.com/OcPBSBv.png" width="150">   <img src="https://i.imgur.com/jdRlgva.png" width="150">   <img src="https://i.imgur.com/3V19oX3.png" width="150">   <img src="https://i.imgur.com/vLPPoSy.png" width="150">
 
 <img src="https://i.imgur.com/jRnDH5z.png" width="150"> <img src="https://i.imgur.com/8lNoDej.png" width="150"> <img src="https://i.imgur.com/z34D3fZ.png" width="150"> <img src="https://i.imgur.com/8lNoDej.png" width="150"> <img src="https://i.imgur.com/9MAzWRu.png" width="150">
 
 
-
-
-
-#  Information
+## Information
 The website is called E-Class, E-class is a website that contains information and many things to help university, lecturer, and student to improve lecture activities. Students can download course material, latest homework, latest news, submit the homework , and many more. So this application is like prototype with all of the real E-Class function in it. I'm trying to fix the problem that students had so I created this application in native app.
 
 * [E-Class UKDW](http://eclass.ukdw.ac.id/id/) - The Eclass Website
 * [UKDW Portal](https://www.ukdw.ac.id/) - Portal University
 
-### Tech
+
+<h1>Tech</h1>
 
 Connector uses a number of open source projects to work properly:
 
@@ -33,9 +31,9 @@ Connector uses a number of open source projects to work properly:
 And of course Connector itself is open source with a [public repository](https://github.com/yehezkiell/EclassApp)
  on GitHub.
 
-### Installation
+### <h1>Installation</h1>
 
-**If you want to contribute in this project you should do :**
+### If you want to contribute in this project you should do : ###
 
 Connector requires newest [Node.js](https://nodejs.org/) and [NPM](https://www.npmjs.com/) to run.
 
@@ -52,7 +50,7 @@ Initialize Firebase SDK for Cloud Functions
 * Run ```firebase init functions```. The tool gives you an option to install dependencies with npm. It is safe to decline if you want to manage dependencies in another way.
 * The tool gives you two options for language support:
 
-**If you only want to run or test the project you should do :**
+### If you only want to run or test the project you should do : ###
 
 ***There are 2 ways :***
 
