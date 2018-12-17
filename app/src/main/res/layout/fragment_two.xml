@@ -4,29 +4,68 @@
     android:id="@+id/frag2"
     android:layout_width="fill_parent"
     android:layout_height="match_parent"
+    android:background="@color/background_color"
     tools:context="com.example.yehezkiel.eclassapp.TwoFragment">
 
 
-    <LinearLayout
+    <android.support.v4.widget.SwipeRefreshLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/swiperefreshtugas"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:background="#eceff1">
+        android:layout_height="match_parent">
 
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/TugasRView"
-            android:padding="10dp"
+
+        <FrameLayout
+            android:id="@+id/container_three"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#eceff1">
+
+            <LinearLayout
+                android:id="@+id/linlaHeaderProgress"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/TugasRView"
+                    android:padding="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:clipToPadding="false"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    />
+
+            </LinearLayout>
+
+            <ProgressBar
+                android:id="@+id/progressBar_tugas1"
+                style="?android:attr/progressBarStyle"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:layout_marginTop="30dp"
+                android:layout_gravity="center"
+                android:visibility="gone"
+                tools:layout_editor_absoluteX="0dp"
+                tools:layout_editor_absoluteY="304dp"
+                android:indeterminate="true"
+                android:indeterminateTintMode="src_atop"
+                android:indeterminateTint="@color/black"
+                />
+
+
+        <TextView
+            android:id="@+id/tugas_static"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:clipToPadding="false"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            />
-
-    </LinearLayout>
-
+            android:layout_height="wrap_content"
+            android:text="TIDAK ADA TUGAS !! "
+            android:textAlignment="center"
+            android:visibility="gone"
+            android:layout_gravity="center"
+            android:textStyle="bold"/>
 
 
 
@@ -39,8 +78,8 @@
 
                 <LinearLayout
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    >
+                    android:layout_height="wrap_content">
+
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -51,32 +90,51 @@
                     android:layout_marginLeft="25dp"
                     android:textColor="@color/white"
                     android:textSize="16dp"
+                    android:textStyle="bold"
                     />
 
-                <TextView
-                    android:id="@+id/jumlah_tugas"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="6  "
-                    android:layout_marginTop="20dp"
-                    android:layout_marginBottom="23dp"
-                    android:textColor="@color/white"
-                    android:textSize="16dp"
-                    />
 
-                    <TextView
+                    <RelativeLayout
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="  Butir"
-                        android:layout_marginTop="20dp"
-                        android:layout_marginBottom="23dp"
-                        android:textColor="@color/white"
-                        android:textSize="16dp"
+                        android:layout_height="wrap_content">
+
+
+
+                    <ProgressBar
+                        android:id="@+id/progressBar_tugas2"
+                        style="?android:attr/progressBarStyle"
+                        android:layout_width="16dp"
+                        android:layout_height="16dp"
+                        android:layout_marginTop="23dp"
+                        android:layout_marginBottom="21dp"
+                        android:layout_gravity="center"
+                        android:visibility="gone"
+                        android:indeterminate="true"
+                        android:indeterminateTintMode="src_atop"
+                        android:indeterminateTint="@color/black"
                         />
+
+                        <TextView
+                            android:id="@+id/jumlah_tugas"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="6  "
+                            android:layout_marginTop="20dp"
+                            android:layout_marginBottom="23dp"
+                            android:textColor="@color/white"
+                            android:textSize="16dp"
+                            />
+
+                    </RelativeLayout>
 
                 </LinearLayout>
 
             </com.bartoszlipinski.recyclerviewheader2.RecyclerViewHeader>
+    </FrameLayout>
+
+    </android.support.v4.widget.SwipeRefreshLayout>
+
+
 
 
 

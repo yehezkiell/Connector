@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="350dp"
+    android:layout_height="250dp"
+    android:padding="5dp"
+    android:background="@color/colorPrimary"
+    android:layout_gravity="center">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Tata Cara Upload Pengumuman"
+        android:layout_gravity="center"
+        android:layout_margin="10dp"
+        android:fontFamily="@font/librefranklin_bold"
+        android:textSize="18sp"
+        android:textColor="@color/white"
+        android:textAlignment="center"/>
+
+    <View
+        android:id="@+id/garis"
+        android:layout_width="match_parent"
+        android:layout_marginTop="5dp"
+        android:layout_below="@id/tanggal_tugas"
+        android:layout_height="0.5dp"
+        android:background="@android:color/white" />
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_margin="10dp"
+        android:padding="5dp"
+        android:layout_gravity="center">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="1. Tambah deskripsi pengumuman"
+            android:layout_gravity="center"
+            android:fontFamily="@font/librefranklin_bold"
+            android:textSize="15sp"
+            android:layout_margin="10dp"
+            android:textColor="@color/white"
+            android:textAlignment="center"/>
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="2. Validasi deskripsi pengumuman"
+            android:layout_gravity="center"
+            android:layout_margin="10dp"
+
+            android:fontFamily="@font/librefranklin_bold"
+            android:textSize="15sp"
+            android:textColor="@color/white"
+            android:textAlignment="center"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="3. Publish pengumuman yang valid"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+
+            android:fontFamily="@font/librefranklin_bold"
+            android:textSize="15sp"
+            android:textColor="@color/white"
+            android:textAlignment="center"/>
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/dismiss_info"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:text="DISMISS"
+        android:padding="10dp"
+        android:layout_marginRight="10dp"
+        android:textColor="@color/white"
+        android:background="@drawable/button_border2"
+        android:layout_gravity="right"/>
+
+
+
+
+
+</LinearLayout>

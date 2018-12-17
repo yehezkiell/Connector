@@ -5,23 +5,99 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@color/background_color"
     tools:context="com.example.yehezkiel.eclassapp.MateriActivity">
 
 
     <Spinner
         android:id="@+id/spinner"
-        android:layout_marginLeft="5dp"
-        android:layout_marginRight="5dp"
+        style="@style/Base.Widget.AppCompat.Spinner.Underlined"
+        android:dropDownSelector="@color/black"
+        android:spinnerMode="dropdown"
         android:layout_width="fill_parent"
-        android:layout_height="60dp">
+        android:layout_height="60dp"
+        android:layout_marginBottom="10dp">
     </Spinner>
 
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:padding="5dp"
+        android:layout_marginTop="5dp"
+        android:layout_gravity="center"
+        android:layout_height="wrap_content">
+
+        <Button
+            android:id="@+id/btnMateri"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_alignBaseline="@+id/staticTugas"
+            android:layout_alignBottom="@+id/staticTugas"
+            android:layout_alignParentEnd="true"
+            android:layout_gravity="right"
+            android:background="@drawable/button_border"
+            android:drawableLeft="@drawable/baseline_add_24"
+            android:onClick="showPopupMateri"
+            android:padding="3dp"
+            android:text="Tambah"
+            android:layout_marginRight="5dp"
+            android:textColor="@color/white"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            android:visibility="gone" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="16dp"
+            android:textSize="18sp"
+
+            android:fontFamily="@font/roboto_medium"
+            android:gravity="center"
+            android:text="Daftar Materi"
+            android:textColor="@color/black"
+            android:textStyle="bold" />
+    </RelativeLayout>
+
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recycler_materi"
+        android:layout_margin="@dimen/activity_vertical_margin"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         tools:layout_editor_absoluteX="8dp"
         tools:layout_editor_absoluteY="56dp" />
+
+
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent">
+        <ProgressBar
+            android:id="@+id/progressBar_materi"
+            style="?android:attr/progressBarStyle"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:layout_centerInParent="true"
+            android:indeterminate="true"
+            android:indeterminateTint="@color/black"
+            android:indeterminateTintMode="src_atop"
+            android:visibility="gone"
+            tools:layout_editor_absoluteX="0dp"
+            tools:layout_editor_absoluteY="304dp" />
+        <TextView
+            android:id="@+id/materi_static"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_gravity="center"
+            android:text="TIDAK ADA MATERI !! "
+            android:textAlignment="center"
+            android:textStyle="bold"
+            android:visibility="gone" />
+
+    </RelativeLayout>
+
 
 </LinearLayout>

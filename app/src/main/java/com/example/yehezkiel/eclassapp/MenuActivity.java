@@ -26,7 +26,7 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.List;
 
-public class DetailActivity extends AppCompatActivity implements View.OnClickListener {
+public class MenuActivity extends AppCompatActivity implements View.OnClickListener {
 
     View v;
     Dialog myDialog;
@@ -35,22 +35,30 @@ public class DetailActivity extends AppCompatActivity implements View.OnClickLis
     private String jamMatkulGet;
     private String bobotMatkulGet;
     private String kelasMatkulGet;
-    private DatabaseReference mataKuliahRef,dosenRef;
+
+    private DatabaseReference mataKuliahRef,dosenRef,courseDosenRef;
+
     private String nama_dosen;
     private String foto_dosen;
+
     private List<ListDosen> listDosen2 = new ArrayList<>();
     private List<ListDosen> listDosen = new ArrayList<>();
+
     private RecyclerView mRecyclerView;
     private RecyclerView.Adapter mAdapter;
-    private String keys;
-    private CardView mNilaiCard,mPesertaCard,mMateriCard,mPengumumanCard;
+
+    private String keys,flag;
+
+
+    private CardView mNilaiCard,mPesertaCard,mMateriCard,mPengumumanCard,mTugasCard,mAsistenCard;
+
 
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_detail);
+        setContentView(R.layout.activity_menu);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         AppCompatDelegate.setCompatVectorFromResourcesEnabled(true);
@@ -60,6 +68,8 @@ public class DetailActivity extends AppCompatActivity implements View.OnClickLis
         //setting database
         mataKuliahRef = FirebaseDatabase.getInstance().getReference("courses");
         dosenRef = FirebaseDatabase.getInstance().getReference("daftar_dosen");
+        courseDosenRef = FirebaseDatabase.getInstance().getReference("course_dosen");
+
 
         //populate custom pop up
         myDialog = new Dialog(this);
@@ -72,13 +82,15 @@ public class DetailActivity extends AppCompatActivity implements View.OnClickLis
         mRecyclerView.setAdapter(mAdapter);
 
 
-        LinearLayoutManager horizontalLayoutManagaer = new LinearLayoutManager(DetailActivity.this, LinearLayoutManager.HORIZONTAL, false);
+        LinearLayoutManager horizontalLayoutManagaer = new LinearLayoutManager(MenuActivity.this, LinearLayoutManager.HORIZONTAL, false);
         mRecyclerView.setLayoutManager(horizontalLayoutManagaer);
 
 
         //put extra
         Intent intent = getIntent();
+        flag = intent.getStringExtra("flag");
         keys = intent.getStringExtra("keys");
+
         namaMatkulGet = intent.getStringExtra("namamatkul");
         dayMatkulGet = intent.getStringExtra("daymatkul");
         jamMatkulGet = intent.getStringExtra("jammatkul");
@@ -86,20 +98,35 @@ public class DetailActivity extends AppCompatActivity implements View.OnClickLis
         kelasMatkulGet = intent.getStringExtra("kelasmatkul");
 
 
+        Log.e("extram","" +keys);
+
+
         mPengumumanCard = (CardView) findViewById(R.id.pengumuman_card);
         mNilaiCard = (CardView) findViewById(R.id.nilai_card);
         mPesertaCard = (CardView) findViewById(R.id.peserta_card);
         mMateriCard = (CardView) findViewById(R.id.materi_card);
+        mTugasCard = (CardView) findViewById(R.id.tugas_card);
+        mAsistenCard = (CardView) findViewById(R.id.asisten_card);
+
 
         mPengumumanCard.setOnClickListener(this);
         mMateriCard.setOnClickListener(this);
         mNilaiCard.setOnClickListener(this);
         mPesertaCard.setOnClickListener(this);
 
+        mTugasCard.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                openTugas();
+            }
+        });
 
-
-
-
+        mAsistenCard.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                openAsisten();
+            }
+        });
 
         TextView namaMatkulPopup = (TextView) myDialog.findViewById(R.id.nama_matkul_popup);
         TextView bobotMatkulPopup = (TextView) myDialog.findViewById(R.id.bobot_matkul_popup);
@@ -112,10 +139,10 @@ public class DetailActivity extends AppCompatActivity implements View.OnClickLis
         kelasMatkulPopup.setText(kelasMatkulGet);
         jamMatkulPopup.setText(jamMatkulGet);
 
-
         //title of detailactivity
         TextView namaMatkulJudul = (TextView) findViewById(R.id.nama_matkul_judul);
         namaMatkulJudul.setText(namaMatkulGet);
+
 
 
 
@@ -169,7 +196,7 @@ public class DetailActivity extends AppCompatActivity implements View.OnClickLis
                     scrollRange = appBarLayout.getTotalScrollRange();
                 }
                 if (scrollRange + verticalOffset == 0) {
-                    collapsingToolbarLayout.setTitle(namaMatkulGet);
+                    collapsingToolbarLayout.setTitle("Menu");
                     isShow = true;
                 } else if(isShow) {
                     collapsingToolbarLayout.setTitle(" ");//carefull there should a space between double quote otherwise it wont work
@@ -184,7 +211,7 @@ public class DetailActivity extends AppCompatActivity implements View.OnClickLis
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(DetailActivity.this,MainActivity.class);
+                Intent intent = new Intent(MenuActivity.this,MainActivity.class);
                 startActivity(intent);
                 finish();
             }
@@ -212,30 +239,55 @@ public class DetailActivity extends AppCompatActivity implements View.OnClickLis
     public void onClick(View view) {
         switch (view.getId()) {
             case (R.id.nilai_card):
-                Intent intent = new Intent(DetailActivity.this, NilaiActivity.class);
+                Intent intent = new Intent(MenuActivity.this, NilaiActivity.class);
                 intent.putExtra("keys", keys);
+                intent.putExtra("flag",flag);
+
                 startActivity(intent);
                 break;
             case (R.id.materi_card):
-                Intent intent2 = new Intent(DetailActivity.this, MateriActivity.class);
+                Intent intent2 = new Intent(MenuActivity.this, MateriActivity.class);
                 intent2.putExtra("keys", namaMatkulGet);
+                intent2.putExtra("flag",flag);
+                if(flag.equals("asdos")){
+                    intent2.putExtra("namamatkul",namaMatkulGet);
+                }
                 startActivity(intent2);
                 break;
             case (R.id.peserta_card):
-                Intent intent3 = new Intent(DetailActivity.this, PesertaActivity.class);
+                Intent intent3 = new Intent(MenuActivity.this, PesertaActivity.class);
                 intent3.putExtra("namaMatkul", namaMatkulGet);
                 intent3.putExtra("keys", keys);
                 startActivity(intent3);
                 break;
             case (R.id.pengumuman_card):
-                Intent intent4 = new Intent(DetailActivity.this, PengumumanDetailActivity.class);
+                Intent intent4 = new Intent(MenuActivity.this, PengumumanDetailActivity.class);
                 intent4.putExtra("namaMatkul", namaMatkulGet);
+                intent4.putExtra("flag",flag);
                 intent4.putExtra("keys", keys);
                 startActivity(intent4);
                 break;
 
 
+
+
         }
+    }
+
+    private void openTugas(){
+        Intent intent5= new Intent(MenuActivity.this, Tugas.class);
+        intent5.putExtra("namaMatkul", namaMatkulGet);
+        intent5.putExtra("keys", keys);
+        intent5.putExtra("flag",flag);
+        startActivity(intent5);
+    }
+
+    private void openAsisten(){
+        Intent intent5 = new Intent(MenuActivity.this, PesertaActivity.class);
+        intent5.putExtra("namaMatkul", namaMatkulGet);
+        intent5.putExtra("keys", keys);
+        intent5.putExtra("flag", "asisten");
+        startActivity(intent5);
     }
 }
 

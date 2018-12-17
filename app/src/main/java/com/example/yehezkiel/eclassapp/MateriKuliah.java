@@ -7,14 +7,24 @@ package com.example.yehezkiel.eclassapp;
 public class MateriKuliah {
 
     private String nama,pertemuan,url;
+    private boolean silabus;
 
-    public MateriKuliah(String nama, String pertemuan, String url) {
+    public MateriKuliah(String nama, String pertemuan, String url, boolean silabus) {
         this.nama = nama;
         this.pertemuan = pertemuan;
         this.url = url;
+        this.silabus = silabus;
     }
 
     public MateriKuliah() {
+    }
+
+    public boolean isSilabus() {
+        return silabus;
+    }
+
+    public void setSilabus(boolean silabus) {
+        this.silabus = silabus;
     }
 
     public String getNama() {

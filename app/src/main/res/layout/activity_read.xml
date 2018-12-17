@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.NestedScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@mipmap/bgapps"
+    tools:context="com.example.yehezkiel.eclassapp.ReadActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="wrap_content"
+                android:theme="@style/ToolbarColoredBackArrow"
+                android:layout_height="?attr/actionBarSize"
+                app:navigationIcon="?attr/homeAsUpIndicator" />
+
+
+
+            <Button
+                android:id="@+id/infoTugasPengDetail"
+                android:layout_width="75dp"
+                android:drawablePadding="-9dp"
+                android:textSize="12dp"
+                android:layout_height="30dp"
+                android:layout_gravity="right"
+                android:text="Detail"
+                android:layout_margin="10dp"
+                android:fontFamily="@font/librefranklin_bold"
+                android:background="@drawable/button_border2"
+                android:layout_alignParentEnd="true"
+                android:textColor="@color/white"
+                android:drawableStart="@drawable/information_variant"
+                app:srcCompat="@drawable/baseline_info_white_24dp"
+                android:onClick="sbTugasDetail"/>
+
+
+
+            <TextView
+                android:id="@+id/namaMatakuliahPengumuman"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_below="@+id/toolbar"
+                android:layout_centerHorizontal="true"
+                android:text="REKAYASA PERANGKAT LUNAK"
+                android:textAlignment="center"
+                android:padding="5dp"
+                android:fontFamily="@font/librefranklin_extrabold"
+                android:textColor="@color/white"
+                android:textSize="20dp"
+ />
+
+        </RelativeLayout>
+        
+
+
+
+            <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="485dp"
+                android:layout_marginTop="25dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                app:cardElevation="6dp"
+                app:cardBackgroundColor="#36454f"
+                app:cardCornerRadius="10dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="10dp">
+
+                    <TextView
+                        android:id="@+id/static_posting"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentTop="true"
+
+                        android:fontFamily="@font/librefranklin_bold"
+                        android:padding="2dp"
+                        android:text="Diposting pada : "
+                        android:textAlignment="center"
+                        android:textColor="#008000"
+                        android:textSize="12sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tanggalMatakuliahPengumuman"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_toEndOf="@id/static_posting"
+                        android:text="Selasa, 12 September 2012"
+                        android:textAlignment="center"
+                        android:padding="2dp"
+                        android:textStyle="bold"
+                        android:fontFamily="@font/librefranklin_bold"
+
+                        android:textColor="@color/white"
+                        android:textSize="12sp" />
+
+                    <TextView
+                        android:id="@+id/jam_read"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:text="AMPM"
+                        android:fontFamily="@font/librefranklin_bold"
+
+                        android:textSize="12sp"
+                        android:textColor="@color/white"
+                        android:textStyle="bold"/>
+
+                    <TextView
+                        android:id="@+id/judulPengumumanDetail"
+                        android:text="Judulnya"
+                        android:layout_marginTop="10dp"
+                        android:textColor="@color/white"
+                        android:layout_below="@id/tanggalMatakuliahPengumuman"
+                        android:textAlignment="center"
+                        android:layout_width="match_parent"
+                        android:textSize="20sp"
+                        android:fontFamily="@font/librefranklin_extrabold"
+                        android:layout_height="wrap_content" />
+
+                    <View
+                        android:id="@+id/garis_pengumuman"
+                        android:layout_width="match_parent"
+                        android:layout_below="@id/judulPengumumanDetail"
+                        android:layout_marginTop="10dp"
+                        android:layout_height="0.5dp"
+                        android:background="@android:color/white" />
+
+
+                    <TextView
+                        android:id="@+id/deskripsiPengumumanDetail"
+                        android:layout_marginTop="20dp"
+                        android:textColor="@color/white"
+                        android:text="Pengumpulan tugas saya diundur hingga hari minggu"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_centerInParent="true"
+                        android:layout_below="@id/judulPengumumanDetail"
+                        android:layout_width="wrap_content"
+                        android:fontFamily="@font/rubik_regular"
+                        android:textAlignment="center"
+                        android:textSize="16dp"
+                        android:layout_height="wrap_content" />
+
+
+                    <View
+                        android:id="@+id/garis_pengumuman2"
+                        android:layout_width="match_parent"
+                        android:layout_below="@id/deskripsiPengumumanDetail"
+                        android:layout_marginTop="15dp"
+                        android:layout_height="0.5dp"
+                        android:background="@android:color/white" />
+
+
+                    <TextView
+                        android:id="@+id/textStatis"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:layout_below="@+id/garis_pengumuman2"
+                        android:layout_marginTop="10dp"
+                        android:fontFamily="@font/librefranklin_bold"
+                        android:padding="5dp"
+                        android:text="Dikumpulkan Pada :"
+
+                        android:textAlignment="center"
+                        android:textColor="#008000"
+                        android:textSize="12sp"
+                        android:textStyle="bold" />
+
+
+
+                    <TextView
+                        android:id="@+id/tanggalMatakuliahKumpul"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="5dp"
+                        android:textStyle="bold"
+                        android:layout_toEndOf="@+id/textStatis"
+                        android:layout_below="@+id/garis_pengumuman2"
+                        android:layout_marginTop="10dp"
+                        android:text="Selasa, 12 September 2012"
+                        android:textAlignment="center"
+                        android:textColor="@color/white"
+                        android:fontFamily="@font/librefranklin_bold"
+
+                        android:textSize="12sp" />
+
+                </RelativeLayout>
+
+
+            </android.support.v7.widget.CardView>
+
+    </LinearLayout>
+
+</android.support.v4.widget.NestedScrollView>
+
+

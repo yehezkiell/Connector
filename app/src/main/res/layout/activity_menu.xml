@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#fcfcfc"
-    tools:context="com.example.yehezkiel.eclassapp.DetailActivity">
+    tools:context="com.example.yehezkiel.eclassapp.MenuActivity">
 
     <android.support.design.widget.AppBarLayout
         android:id="@+id/appbarlay"
@@ -51,14 +51,17 @@
                 android:layout_height="?attr/actionBarSize"
                 app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
 
-            <ImageButton
-                android:id="@+id/imageButton2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+            <Button
+                android:id="@+id/info_menu"
+                android:layout_width="100dp"
+                android:layout_height="35dp"
                 android:layout_gravity="right"
-                android:layout_margin="15dp"
-                android:background="@android:color/transparent"
+                android:text="Detail"
+                android:layout_margin="9dp"
+                android:fontFamily="@font/librefranklin_bold"
+                android:background="@drawable/button_border2"
                 android:onClick="showPopup"
+                android:drawableLeft="@drawable/information_variant"
                 app:srcCompat="@drawable/baseline_info_white_24dp" />
 
 

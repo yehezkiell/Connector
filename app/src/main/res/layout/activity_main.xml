@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="#4A9586"
+    android:background="#36454f"
     android:orientation="vertical"
     android:scrollbarAlwaysDrawVerticalTrack="true">
 
@@ -13,7 +13,7 @@
         android:layout_below="@+id/login_title"
         android:layout_marginLeft="30dp"
         android:layout_marginRight="30dp"
-        android:layout_marginTop="70dp"
+        android:layout_marginTop="60dp"
         android:background="#fff"
         android:elevation="4dp"
         android:orientation="vertical"
@@ -23,22 +23,24 @@
         <LinearLayout
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="9dp"
             android:orientation="vertical"
             android:paddingTop="30dp">
 
             <com.github.florent37.materialtextfield.MaterialTextField
                 android:layout_width="300dp"
                 android:layout_height="wrap_content"
-                app:mtf_labelColor="#666"
                 app:mtf_image="@drawable/ic_email_login"
-                app:mtf_openKeyboardOnFocus="true"
-                >
+                app:mtf_labelColor="#666"
+                app:mtf_openKeyboardOnFocus="true">
 
                 <EditText
+                    android:id="@+id/emailInput"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:id="@+id/emailInput"
-                    android:hint="Email"
+                    android:hint="Email*"
+                    android:singleLine="true"
                     android:textColor="@color/black"
                     android:textCursorDrawable="@null"
                     android:textSize="15sp" />
@@ -48,41 +50,63 @@
             <com.github.florent37.materialtextfield.MaterialTextField
                 android:layout_width="300dp"
                 android:layout_height="wrap_content"
-                app:mtf_labelColor="#666"
                 app:mtf_image="@drawable/ic_password_login"
-                app:mtf_openKeyboardOnFocus="true"
-                >
+                app:mtf_labelColor="#666"
+                app:mtf_openKeyboardOnFocus="true">
 
                 <EditText
+                    android:id="@+id/passwordInput"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:id="@+id/passwordInput"
-                    android:textCursorDrawable="@null"
-                    android:hint="Password"
+                    android:hint="Password*"
+                    android:inputType="textPassword"
                     android:textColor="@color/black"
-                    android:textSize="15sp"
-                    android:inputType="textPassword"/>
+                    android:textCursorDrawable="@null"
+                    android:textSize="15sp" />
 
             </com.github.florent37.materialtextfield.MaterialTextField>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="right"
-                android:paddingTop="5dp"
-                android:text="Forgot Password?" />
-
 
             <Button
                 android:id="@+id/loginBtn"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="22dp"
-                android:background="#d67601"
-                android:text="Sign in"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/button_border"
+                android:fontFamily="@font/rubik_medium"
+                android:text="LOGIN"
                 android:textAllCaps="false"
-                android:textColor="#fff"
-                android:textSize="18sp" />
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/rubik_regular"
+                android:text="Powered by :" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="-20dp"
+                android:layout_marginTop="-10dp"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="75dp"
+                    android:layout_height="75dp"
+                    android:src="@mipmap/ukdw_logo" />
+
+                <ImageView
+                    android:layout_width="75dp"
+                    android:layout_height="75dp"
+                    android:src="@mipmap/eclass_logo1" />
+            </LinearLayout>
+
+
         </LinearLayout>
     </RelativeLayout>
 
@@ -92,21 +116,62 @@
         android:layout_height="100dp"
         android:layout_below="@+id/login_title"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="7dp"
         android:background="@drawable/background_profile"
         android:elevation="4dp"
-        android:src="@mipmap/ukdw_logo" />
+        android:src="@mipmap/connector_icon" />
+
+    <TextView
+        android:id="@+id/connector_title"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:text="Welcome to, "
+        android:layout_marginTop="20dp"
+        android:fontFamily="@font/librefranklin_extrabold"
+        android:textColor="#fff"
+        android:textSize="26sp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true" />
 
     <TextView
         android:id="@+id/login_title"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="26dp"
         android:gravity="center_horizontal"
-        android:text="Login "
+        android:text="Connector"
+        android:layout_below="@id/connector_title"
         android:textColor="#fff"
         android:textSize="26sp"
-        android:textStyle="bold"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true" />
+        android:fontFamily="@font/librefranklin_extrabold" />
+
+
+    <TextView
+        android:id="@+id/version_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/link_title"
+        android:layout_alignParentStart="true"
+        android:fontFamily="@font/roboto_regular"
+        android:gravity="center"
+        android:text="Version 1.0"
+        android:textColor="#fff"
+        android:textSize="8sp" />
+
+
+    <TextView
+        android:id="@+id/link_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="www.ukdw.ac.id"
+        android:gravity="center"
+        android:layout_alignParentBottom="true"
+        android:textColor="#fff"
+        android:textSize="14sp"
+        android:paddingBottom="10dp"
+        android:fontFamily="@font/roboto_regular" />
+
+
+
+
 </RelativeLayout>

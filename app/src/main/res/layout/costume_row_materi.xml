@@ -4,22 +4,38 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
-    android:padding="10dip"
     android:background="@color/white"
-    >
+    android:padding="10dip">
 
+
+    <TextView
+        android:id="@+id/silabus"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentTop="true"
+        android:background="@drawable/button_border2"
+        android:fontFamily="@font/roboto_medium"
+        android:gravity="right"
+        android:text="SILABUS"
+        android:textColor="@color/red_btn_bg_color"
+        android:textSize="10sp"
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/judul_materi"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
         android:layout_alignWithParentIfMissing="true"
+        android:layout_below="@id/silabus"
         android:layout_marginStart="18dp"
         android:layout_toEndOf="@+id/imageView6"
+        android:layout_toStartOf="@+id/imageView5"
+        android:fontFamily="@font/roboto_medium"
         android:gravity="left"
+        android:padding="10dp"
         android:text="Example application "
-        android:textColor="#5e1b2c"
+        android:textColor="@color/black"
         android:textSize="16dp" />
 
 
@@ -27,8 +43,9 @@
         android:id="@+id/imageView6"
         android:layout_width="24dp"
         android:layout_height="24dp"
+        android:layout_alignBottom="@+id/pertemuan"
         android:layout_alignParentStart="true"
-        android:layout_centerVertical="true"
+        android:layout_alignTop="@id/judul_materi"
         app:srcCompat="@drawable/ic_office" />
 
 
@@ -37,16 +54,19 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/imageView4"
+        android:layout_below="@+id/judul_materi"
         android:layout_marginStart="8dp"
         android:layout_toEndOf="@+id/imageView4"
+        android:gravity="center"
         android:text="Pertemuan" />
 
     <ImageView
         android:id="@+id/imageView5"
         android:layout_width="24dp"
         android:layout_height="24dp"
-        android:layout_alignParentEnd="true"
-        android:layout_centerVertical="true"
+        android:layout_alignBottom="@+id/pertemuan"
+        android:layout_alignEnd="@+id/silabus"
+        android:layout_alignTop="@id/judul_materi"
         app:srcCompat="@drawable/ic_download" />
 
     <ImageView
@@ -54,11 +74,10 @@
         android:layout_width="24dp"
         android:layout_height="24dp"
         android:layout_alignStart="@+id/judul_materi"
-        android:layout_below="@+id/imageView6"
+        android:layout_below="@+id/judul_materi"
         android:layout_marginStart="11dp"
         android:ellipsize="marquee"
         app:srcCompat="@drawable/ic_new_calendar" />
-
 
 
 </RelativeLayout>

@@ -10,6 +10,10 @@ public class DaftarTugas{
     private String deskripsi_tugas;
     private String tanggal_kumpul;
     private String tanggal_tugas;
+    private Long date_milisecond;
+    private String flag;
+    private String idCourse;
+    private String idTugas;
 
 
     public DaftarTugas(String nama_tugas,String judul_tugas, String deskripsi_tugas, String tanggal_kumpul, String tanggal_tugas) {
@@ -24,7 +28,37 @@ public class DaftarTugas{
 
     }
 
+    public String getIdTugas() {
+        return idTugas;
+    }
 
+    public void setIdTugas(String idTugas) {
+        this.idTugas = idTugas;
+    }
+
+    public String getIdCourse() {
+        return idCourse;
+    }
+
+    public void setIdCourse(String idCourse) {
+        this.idCourse = idCourse;
+    }
+
+    public String getFlag() {
+        return flag;
+    }
+
+    public void setFlag(String flag) {
+        this.flag = flag;
+    }
+
+    public Long getDate_milisecond() {
+        return date_milisecond;
+    }
+
+    public void setDate_milisecond(Long date_milisecond) {
+        this.date_milisecond = date_milisecond;
+    }
 
     public String getNama_tugas() {
         return nama_tugas;

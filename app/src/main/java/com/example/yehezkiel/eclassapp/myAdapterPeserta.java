@@ -48,6 +48,8 @@ public class myAdapterPeserta extends RecyclerView.Adapter<myAdapterPeserta.MyVi
     public void onBindViewHolder(myAdapterPeserta.MyViewHolder holder, int position) {
         PesertaMatakuliah nilai = listPeserta.get(position);
 
+
+
         holder.name.setText(nilai.getName());
         holder.nim.setText(""+nilai.getNim());
         holder.nomer.setText(Integer.toString(position+1));

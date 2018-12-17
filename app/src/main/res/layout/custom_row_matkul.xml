@@ -13,15 +13,45 @@
         android:id="@+id/kode"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/hari"
         android:layout_alignParentTop="true"
         android:layout_alignStart="@+id/first_line"
+        android:layout_marginBottom="5dp"
+        android:fontFamily="@font/roboto_regular"
         android:text="TextView"
-        android:layout_marginBottom="5dp"/>
+        android:textSize="10sp"
+        android:textStyle="italic" />
+
+
+
+    <TextView
+        android:id="@+id/asdos"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentTop="true"
+        android:textStyle="bold"
+        android:layout_marginTop="2dp"
+        android:visibility="gone"
+        android:textColor="@color/red_btn_bg_color"
+        android:text="[ASDOS]" />
+
+    <ImageView
+        android:id="@+id/imgAsdos"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginEnd="10dp"
+        android:layout_toStartOf="@+id/asdos"
+        app:srcCompat="@drawable/asdos"
+        android:visibility="gone"/>
+
 
     <TextView
         android:id="@+id/first_line"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/roboto_medium"
         android:layout_alignWithParentIfMissing="true"
         android:layout_below="@+id/kode"
         android:layout_marginStart="20dp"
@@ -29,8 +59,8 @@
         android:layout_toStartOf="@+id/imageView5"
         android:gravity="left"
         android:text="Example application"
-        android:textColor="#5e1b2c"
-        android:textSize="16dp" />
+        android:textColor="@color/colorPrimary"
+        android:textSize="20sp" />
 
 
     <ImageView
@@ -53,6 +83,10 @@
         android:ellipsize="marquee"
         android:singleLine="true"
         android:text="hari"
+        android:padding="5dp"
+
+        android:textSize="14sp"
+        android:fontFamily="@font/roboto_regular"
         android:layout_marginLeft="8dp"
         android:textColor="#555555" />
 
@@ -62,9 +96,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/imageView6"
-        android:layout_toEndOf="@+id/textkelas"
+        android:layout_toEndOf="@+id/hari"
+        android:fontFamily="@font/roboto_regular"
         android:text="waktu"
-        android:textColor="#555555" />
+        android:padding="5dp"
+        android:textColor="#555555"
+        android:textSize="14sp" />
 
     <TextView
         android:id="@+id/kelas"
@@ -72,9 +109,11 @@
         android:layout_height="wrap_content"
         android:layout_alignBaseline="@+id/textkelas"
         android:layout_alignBottom="@+id/textkelas"
-        android:layout_marginStart="10dp"
         android:layout_toEndOf="@+id/textkelas"
-        android:text="TextView" />
+        android:fontFamily="@font/roboto_regular"
+        android:padding="5dp"
+        android:text="TextView"
+        android:textSize="14sp" />
 
     <ImageView
         android:id="@+id/imageView2"
@@ -91,7 +130,11 @@
         android:layout_height="wrap_content"
         android:layout_alignStart="@+id/hari"
         android:layout_alignTop="@+id/imageView4"
-        android:text="Ruang :" />
+        android:text="Ruang :"
+        android:padding="5dp"
+
+        android:textSize="14sp"
+        android:fontFamily="@font/roboto_regular"/>
 
     <ImageView
         android:id="@+id/imageView5"

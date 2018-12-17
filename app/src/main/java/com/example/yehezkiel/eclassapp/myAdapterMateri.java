@@ -1,5 +1,6 @@
 package com.example.yehezkiel.eclassapp;
 
+import android.graphics.Color;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -18,13 +19,14 @@ public class myAdapterMateri extends RecyclerView.Adapter<myAdapterMateri.MyView
     private List<MateriKuliah> listMateri;
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
-        public TextView nama,pertemuan;
+        public TextView nama,pertemuan,silabus;
 
 
         public MyViewHolder(View view) {
             super(view);
             nama = (TextView) view.findViewById(R.id.judul_materi);
             pertemuan = (TextView) view.findViewById(R.id.pertemuan);
+            silabus = (TextView) view.findViewById(R.id.silabus);
         }
 
     }
@@ -47,7 +49,17 @@ public class myAdapterMateri extends RecyclerView.Adapter<myAdapterMateri.MyView
         MateriKuliah materi = listMateri.get(position);
         holder.nama.setText(materi.getNama());
         holder.pertemuan.setText(materi.getPertemuan());
-    }
+
+
+            if(materi.isSilabus()){
+                 holder.silabus.setText("SILABUS");
+                 holder.silabus.setTextColor(Color.RED);
+
+            }else{
+                holder.silabus.setText("MATERI");
+                holder.silabus.setTextColor(Color.BLACK);
+            }
+        }
 
     @Override
     public int getItemCount() {

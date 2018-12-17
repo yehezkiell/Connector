@@ -60,7 +60,7 @@ public class LoginActivity extends Activity {
                 if (TextUtils.isEmpty(email)) {
                     new SweetAlertDialog(LoginActivity.this, SweetAlertDialog.ERROR_TYPE)
                             .setTitleText("Oops...")
-                            .setContentText("Email is Empty !!")
+                            .setContentText("Email tidak boleh kosong !!")
                             .show();
                     return;
                 }
@@ -68,7 +68,7 @@ public class LoginActivity extends Activity {
                 if (TextUtils.isEmpty(password)) {
                     new SweetAlertDialog(LoginActivity.this, SweetAlertDialog.ERROR_TYPE)
                             .setTitleText("Oops...")
-                            .setContentText("Password is Empty !!")
+                            .setContentText("Password tidak boleh kosong !!")
                             .show();
 
 
@@ -95,13 +95,13 @@ public class LoginActivity extends Activity {
                             if (password.length() < 6) {
                                 new SweetAlertDialog(LoginActivity.this, SweetAlertDialog.ERROR_TYPE)
                                         .setTitleText("Oops...")
-                                        .setContentText("Enter minimum 6 charachters !! ")
+                                        .setContentText("Password minimal 6 karakter !! ")
                                         .show();
                             } else {
                                 passwordInput.setText("");
                                 new SweetAlertDialog(LoginActivity.this, SweetAlertDialog.ERROR_TYPE)
                                         .setTitleText("Oops...")
-                                        .setContentText("Authentication failed !!")
+                                        .setContentText("Autentikasi gagal, periksa kembali email dan password Anda !!")
                                         .show();
                             }
                         } else {

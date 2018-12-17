@@ -4,12 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     android:background="@color/background_color"
     tools:context="com.example.yehezkiel.eclassapp.PengumumanDetailActivity">
-
-
-
-
 
 
     <LinearLayout
@@ -17,19 +14,50 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-
-
-        <TextView
-            android:id="@+id/staticPengumuman"
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Judul Pengumuman"
-            android:layout_marginBottom="2dp"
-            android:textStyle="bold"
-            android:textColor="@color/black"
-            android:textSize="18sp"
-            android:paddingLeft="@dimen/activity_vertical_margin"
-            android:paddingTop="@dimen/activity_vertical_margin"/>
+            android:layout_marginBottom="@dimen/activity_vertical_margin"
+            >
+
+            <TextView
+                android:id="@+id/staticPengumuman"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:layout_margin="5dp"
+                android:layout_alignParentStart="true"
+                android:layout_centerVertical="true"
+                android:layout_toStartOf="@+id/btnPengumuman"
+                android:paddingLeft="@dimen/activity_vertical_margin"
+                android:paddingTop="@dimen/activity_vertical_margin"
+                android:text="Daftar Pengumuman"
+                android:textColor="@color/black"
+                android:fontFamily="@font/roboto_medium"
+
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <Button
+                android:id="@+id/btnPengumuman"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:layout_marginRight="5dp"
+
+                android:layout_alignBottom="@+id/staticPengumuman"
+                android:layout_alignParentEnd="true"
+                android:layout_gravity="right"
+                android:background="@drawable/button_border"
+                android:drawableLeft="@drawable/baseline_add_24"
+                android:onClick="showPopupPengumuman"
+                android:padding="3dp"
+                android:text="Tambah"
+                android:textColor="@color/white"
+                android:textSize="12sp"
+                android:textStyle="bold"
+                android:visibility="visible" />
+
+        </RelativeLayout>
 
 
 
@@ -54,7 +82,7 @@
             android:layout_height="wrap_content"
             android:text="BELUM ADA PENGUMUMAN !"
             android:layout_marginTop="50dp"
-            android:gravity="center"
+            android:layout_gravity="center"
             android:visibility="gone"
 
             />

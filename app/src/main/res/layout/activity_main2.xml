@@ -9,6 +9,12 @@
 
 
 
+    <!--<android.support.v4.widget.SwipeRefreshLayout-->
+        <!--xmlns:android="http://schemas.android.com/apk/res/android"-->
+        <!--android:id="@+id/swiperefreshone"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content">-->
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -22,17 +28,24 @@
 
 
 
+
+
+
                 <include
                     layout="@layout/navbar_action"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
+
+
                 </include>
+
+
 
 
             <android.support.design.widget.TabLayout
                 android:id="@+id/tabs"
                 android:layout_width="match_parent"
-                android:layout_height="60dp"
+                android:layout_height="65dp"
                 app:tabGravity="fill"
                 app:tabMode="fixed"
                 android:layout_marginBottom="15px"/>
@@ -64,5 +77,7 @@
         android:id="@+id/nav_menu">
 
     </android.support.design.widget.NavigationView>
+
+    <!--</android.support.v4.widget.SwipeRefreshLayout>-->
 
 </android.support.v4.widget.DrawerLayout>

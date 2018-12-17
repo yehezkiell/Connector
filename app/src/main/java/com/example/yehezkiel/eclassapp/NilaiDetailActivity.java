@@ -6,6 +6,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.widget.FrameLayout;
+import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -40,6 +41,8 @@ public class NilaiDetailActivity extends BaseActivity {
     private FirebaseUser users;
 
     private int count;
+    private double mathAkhir;
+    private TextView averageNilai;
 
 
 
@@ -56,6 +59,8 @@ public class NilaiDetailActivity extends BaseActivity {
         nilaiRef = FirebaseDatabase.getInstance().getReference("nilai_course");
         nilaiInfoRef = FirebaseDatabase.getInstance().getReference("keterangan_nilai");
 
+
+        averageNilai = (TextView) findViewById(R.id.averageNilai);
         Intent intent = getIntent();
         keys = intent.getStringExtra("keys");
         nama_matkul = intent.getStringExtra("namamatkul");
@@ -74,26 +79,33 @@ public class NilaiDetailActivity extends BaseActivity {
         nilaiRef.child(nama_matkul).child(keys).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-
-
+                listNilaiDetail.clear();
                 if(dataSnapshot.exists()){
                     int count = 0;
                     for(DataSnapshot dataHasil : dataSnapshot.getChildren()){
                         final String uid = dataHasil.getKey();
+                        Log.e("news",""+uid);
 
                         final String nilai_temp = (String) dataHasil.getValue().toString();
-
+                        final int count2 = (int) dataSnapshot.getChildrenCount();
                         final double etKids = Double.parseDouble(nilai_temp);
                         //ambil nilai disini
-                        Log.e("news",""+dataHasil.getValue());
+
                         count++;
                         final int finalCount = count;
-                        userRef.child(uid).addListenerForSingleValueEvent(new ValueEventListener() {
+                        mathAkhir=0;
+                        userRef.child(uid).addValueEventListener(new ValueEventListener() {
                             @Override
                             public void onDataChange(DataSnapshot dataSnapshot) {
                                 if(dataSnapshot.exists()){
                                     ListNilaiDetail nilai = dataSnapshot.getValue(ListNilaiDetail.class);
                                     nilai.setNilai(etKids);
+
+                                    mathAkhir = (mathAkhir+nilai.getNilai());
+                                    Log.e("countnya",""+mathAkhir);
+
+                                    averageNilai.setText(""+mathAkhir/count2);
+                                    Log.e("countnya","pembagian "+mathAkhir/count2);
 
 
 

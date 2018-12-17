@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="350dp"
+    android:layout_height="550dp"
+    android:background="@color/white"
+    android:layout_gravity="center">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/txtInfo"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:textColor="@color/black"
+            android:layout_margin="10dp"
+            android:text="i"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:onClick="showInfoTugas"
+            android:background="@drawable/circlebackground"/>
+
+        <TextView
+            android:id="@+id/txtClose"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="9dp"
+            android:background="@drawable/circlebackground"
+            android:gravity="center"
+            android:text="X"
+            android:textColor="@color/black"
+            android:textStyle="bold" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:backgroundTint="@color/colorPrimary"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingRight="10dp"
+        android:paddingLeft="10dp"
+        android:gravity="center"
+        android:layout_gravity="center"
+        android:background="@color/white">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="UPLOAD TUGAS"
+            android:textAlignment="center"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textColor="@color/white"/>
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:padding="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_marginBottom="2dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Nama Tugas *"
+            android:textColor="@color/black"
+            android:textStyle="bold"/>
+
+        <EditText
+            android:id="@+id/nama_tugas"
+            android:background="@drawable/custom_edittext"
+            android:inputType="textMultiLine"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Min 10 Karakter"
+            android:textColor="@color/black"
+
+            android:padding="10dp"
+            android:layout_marginBottom="15dp"/>
+
+
+
+        <TextView
+            android:textColor="@color/black"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Judul Tugas *"
+            android:layout_marginBottom="2dp"
+            android:textStyle="bold"/>
+
+        <EditText
+            android:id="@+id/judul_tugas"
+            android:background="@drawable/custom_edittext"
+            android:inputType="textMultiLine"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Min 10 Karakter"
+            android:padding="10dp"
+            android:textColor="@color/black"
+            android:layout_marginBottom="5dp"/>
+
+        <TextView
+            android:textColor="@color/black"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Deskripsi Tugas *"
+            android:layout_marginBottom="2dp"
+            android:textStyle="bold"/>
+
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:hintEnabled="false"
+            app:counterEnabled="true"
+            app:counterMaxLength="120">
+
+        <EditText
+            android:id="@+id/deskripsi_tugas"
+            android:background="@drawable/custom_edittext"
+            android:inputType="textMultiLine"
+            android:layout_width="match_parent"
+            android:layout_height="130dp"
+            android:hint="Maksimal 120 Karakter"
+            android:maxLength="120"
+            android:singleLine="false"
+            android:gravity="start"
+            android:scrollbars="vertical"
+            android:overScrollMode="always"
+            android:scrollbarStyle="insideInset"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:padding="5dp"
+            android:textColor="@color/black"
+            android:layout_marginBottom="5dp"/>
+
+        </android.support.design.widget.TextInputLayout>
+
+        <TextView
+            android:textColor="@color/black"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Tanggal Pengumpulan Tugas *"
+            android:layout_marginBottom="2dp"
+            android:textStyle="bold"/>
+
+        <EditText
+
+            android:id="@+id/tanggal_kumpul"
+            android:background="@drawable/custom_edittext"
+            android:inputType="textMultiLine"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Ex `2018-09-25`"
+            android:padding="10dp"
+            android:textColor="@color/black"
+            android:layout_marginBottom="5dp"/>
+
+
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/buttonUploadTugas"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:padding="10dp"
+            android:layout_gravity="center"
+            android:layout_margin="@dimen/activity_vertical_margin"
+            android:textStyle="bold"
+            android:background="@drawable/button_border"
+            android:textColor="@color/white"
+            android:onClick="uploadTugas1"
+            android:text="Tambah" />
+
+        <Button
+            android:id="@+id/buttonUploadTugas2"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:padding="10dp"
+            android:enabled="false"
+            android:layout_gravity="center"
+            android:layout_margin="@dimen/activity_vertical_margin"
+            android:text="Publish"
+            android:textStyle="bold"
+            android:background="@drawable/button_selector"
+            android:textColor="@color/white"
+            android:onClick="uploadTugas2"
+            />
+
+        <Button
+            android:id="@+id/buttonClearTugas"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:padding="10dp"
+            android:layout_gravity="center"
+            android:layout_margin="@dimen/activity_vertical_margin"
+            android:textStyle="bold"
+            android:enabled="false"
+            android:background="@drawable/button_selector"
+            android:textColor="@color/white"
+            android:onClick="uploadTugas1"
+            android:text="Hapus " />
+
+
+    </LinearLayout>
+
+
+</LinearLayout>

@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="350dp"
+    android:layout_height="475dp"
+    android:background="@color/white"
+    android:layout_gravity="center">
+
+
+
+         <TextView
+            android:id="@+id/txtClose"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:textColor="@color/black"
+            android:layout_margin="10dp"
+            android:text="X"
+            android:layout_gravity="end"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:background="@drawable/circlebackground"/>
+
+
+    <LinearLayout
+        android:backgroundTint="@color/colorPrimary"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingRight="10dp"
+        android:paddingLeft="10dp"
+        android:gravity="center"
+        android:layout_gravity="center"
+        android:background="@color/white">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="UPLOAD MATERI"
+            android:textAlignment="center"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textColor="@color/white"/>
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_marginTop="30dp"
+        android:padding="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_marginBottom="2dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Nama Materi *"
+            android:textColor="@color/colorPrimary"
+            android:textStyle="bold"/>
+
+        <EditText
+            android:id="@+id/input_nama"
+            android:background="@drawable/custom_edittext"
+            android:inputType="textMultiLine"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="SQL"
+            android:textColor="@color/black"
+            android:padding="10dp"
+            android:layout_marginBottom="15dp"/>
+
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Pertemuan *"
+            android:layout_marginBottom="2dp"
+            android:textColor="@color/colorPrimary"
+            android:textStyle="bold"/>
+
+        <EditText
+            android:id="@+id/input_pertemuan"
+            android:background="@drawable/custom_edittext"
+            android:inputType="textMultiLine"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Pertemuan 2"
+            android:padding="10dp"
+            android:textColor="@color/black"
+            android:layout_marginBottom="5dp"/>
+
+
+
+
+
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        >
+
+        <Button
+            android:id="@+id/buttonChoose"
+            android:layout_margin="@dimen/activity_vertical_margin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Choose File"
+            android:padding="5dp"
+            android:textColor="@color/white"
+            android:background="@drawable/button_selector"
+            android:onClick="showFileChooser"/>
+
+        <TextView
+            android:id="@+id/upload_path"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="-"
+            android:layout_gravity="center"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/buttonUpload"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="@dimen/activity_vertical_margin"
+            android:onClick="uploadFile"
+            android:textColor="@color/white"
+            android:enabled="false"
+            android:background="@drawable/button_selector"
+            android:text="Upload" />
+
+    </LinearLayout>
+
+
+    </LinearLayout>

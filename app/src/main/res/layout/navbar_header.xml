@@ -2,36 +2,68 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="180dp"
+    android:layout_height="200dp"
     android:background="@color/colorPrimary">
+
+
+    <ImageView
+        android:id="@+id/asdos_header"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginBottom="5dp"
+        android:layout_marginRight="5dp"
+        android:padding="5dp"
+        android:textColor="@color/white"
+        android:textStyle="bold" />
+
+    <ImageView
+        android:id="@+id/prodi_header"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp"
+        android:padding="5dp"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_alignParentTop="true"
+        android:textColor="@color/white" />
+
+
 
     <TextView
         android:id="@+id/header_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_above="@+id/header_nim"
-        android:layout_centerHorizontal="true"
         android:singleLine="true"
         android:text="Yehezkiel"
+        android:layout_centerInParent="true"
+        android:textStyle="bold"
+        android:layout_marginLeft="15dp"
         android:textColor="@color/white"
-        android:textSize="30sp" />
+        android:textSize="20sp" />
 
     <TextView
         android:id="@+id/header_nim"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/header_name"
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
+        android:layout_alignStart="@+id/header_name"
         android:layout_marginBottom="11dp"
         android:text="71140011"
+        android:textAlignment="center"
         android:textColor="@color/white"
-        android:textSize="18sp" />
+        android:textSize="14sp" />
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_above="@+id/header_name"
-        android:layout_centerHorizontal="true"
+        android:layout_width="75dp"
+        android:layout_height="75dp"
+        android:layout_alignEnd="@+id/header_name"
+        android:layout_alignStart="@+id/header_name"
+        android:layout_centerVertical="true"
         app:srcCompat="@mipmap/ic_account_circle_white_24dp" />
 </RelativeLayout>

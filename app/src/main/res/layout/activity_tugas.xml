@@ -1,9 +1,110 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/background_color"
     tools:context="com.example.yehezkiel.eclassapp.Tugas">
 
-</android.support.constraint.ConstraintLayout>
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        >
+
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/activity_vertical_margin"
+            >
+
+            <TextView
+                android:id="@+id/staticTugas"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_centerVertical="true"
+                android:layout_toStartOf="@+id/btnTugas"
+                android:paddingLeft="@dimen/activity_vertical_margin"
+                android:paddingTop="@dimen/activity_vertical_margin"
+                android:text="Daftar Tugas"
+                android:textColor="@color/black"
+                android:fontFamily="@font/roboto_medium"
+
+                android:textSize="18sp"
+                android:padding="5dp"
+                android:layout_margin="5dp"
+                android:textStyle="bold" />
+
+            <Button
+                android:id="@+id/btnTugas"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:layout_alignBaseline="@+id/staticTugas"
+                android:layout_alignBottom="@+id/staticTugas"
+                android:layout_alignParentEnd="true"
+                android:layout_gravity="right"
+                android:background="@drawable/button_border"
+                android:drawableLeft="@drawable/baseline_add_24"
+                android:onClick="showPopupTugas"
+                android:padding="3dp"
+                android:text="Tambah"
+                android:layout_marginRight="5dp"
+                android:textColor="@color/white"
+                android:textSize="12sp"
+                android:textStyle="bold"
+                android:visibility="visible" />
+
+        </RelativeLayout>
+
+
+
+
+        <ProgressBar
+            android:id="@+id/progressBar_tugas"
+            style="?android:attr/progressBarStyle"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_gravity="center"
+            android:visibility="visible"
+            tools:layout_editor_absoluteX="0dp"
+            tools:layout_editor_absoluteY="304dp"
+            android:indeterminate="true"
+            android:layout_marginTop="50dp"
+            android:indeterminateTintMode="src_atop"
+            android:indeterminateTint="@color/black"
+            />
+
+        <TextView
+            android:id="@+id/static_null_tugas"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="BELUM ADA TUGAS !"
+            android:layout_marginTop="50dp"
+            android:layout_gravity="center"
+            android:visibility="gone"
+
+            />
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recyclerViewTugas"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingLeft="@dimen/activity_vertical_margin"
+            android:paddingRight="@dimen/activity_vertical_margin"/>
+
+
+    </LinearLayout>
+
+    </android.support.v4.widget.NestedScrollView>
+
+
+</LinearLayout>

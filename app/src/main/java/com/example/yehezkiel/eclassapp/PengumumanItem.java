@@ -6,17 +6,17 @@ package com.example.yehezkiel.eclassapp;
 
 public class PengumumanItem extends ListItem {
 
-    private String nama_matkul;
+    private String tanggal_peng;
 
-
-    public String getNama_matkul() {
-
-        return nama_matkul;
+    public String getTanggal_peng() {
+        return tanggal_peng;
     }
 
-    public void setNama_matkul(String nama_matkul) {
-        this.nama_matkul = nama_matkul;
+    public void setTanggal_peng(String tanggal_peng) {
+        this.tanggal_peng = tanggal_peng;
     }
+
+
 
     @Override
     public int getType() {

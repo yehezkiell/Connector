@@ -26,6 +26,12 @@
 
                     android:icon="@drawable/ic_book_download_interface_symbol"></item>
 
+                <item android:id="@+id/equ_ukdw"
+                    android:title="EQ UKDW"
+                    android:checkable="true"
+
+                    android:icon="@drawable/baseline_question_answer_black_24dp"></item>
+
             </group>
         </menu>
 
@@ -35,7 +41,6 @@
     <item android:title="Other">
         <menu>
             <group android:checkableBehavior="single">
-
 
     <item android:id="@+id/logout_menu"
         android:title="Logout"

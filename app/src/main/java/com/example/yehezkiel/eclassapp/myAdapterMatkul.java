@@ -12,7 +12,7 @@ import java.util.List;
  * Created by Yehezkiel on 4/10/2018.
  */
 
-public class myAdapter extends RecyclerView.Adapter<myAdapter.MyViewHolder> {
+public class myAdapterMatkul extends RecyclerView.Adapter<myAdapterMatkul.MyViewHolder> {
     private List<MataKuliah> listMatkul;
 
 
@@ -32,7 +32,7 @@ public class myAdapter extends RecyclerView.Adapter<myAdapter.MyViewHolder> {
         }
 
     }
-    public myAdapter(List<MataKuliah> listMatkul) {
+    public myAdapterMatkul(List<MataKuliah> listMatkul) {
 
         this.listMatkul = listMatkul;
     }
@@ -40,7 +40,7 @@ public class myAdapter extends RecyclerView.Adapter<myAdapter.MyViewHolder> {
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.costume_row, parent, false);
+                .inflate(R.layout.custom_row_matkul, parent, false);
 
         return new MyViewHolder(itemView);
     }

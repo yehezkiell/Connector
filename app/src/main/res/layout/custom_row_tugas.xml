@@ -3,18 +3,28 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="fill_parent"
+    android:id="@+id/custom_tugas"
     android:layout_height="wrap_content"
     android:background="@color/white"
     android:padding="10dip">
 
     <TextView
+        android:fontFamily="@font/roboto_regular"
         android:id="@+id/tanggal_tugas"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:text="@string/_19_sep_2018"
-        android:textSize="12sp"/>
+        android:layout_toStartOf="@+id/enter_view"
+        android:text="@string/_19_sep_2018" />
+
+    <TextView
+        android:fontFamily="@font/roboto_regular"
+        android:id="@+id/jam_tugas"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:text="ampm" />
 
 
     <View
@@ -38,22 +48,35 @@
         android:layout_marginTop="15dp"
         android:layout_toStartOf="@+id/enter_view"
         android:text="Example application"
-        android:textColor="#5e1b2c"
+        android:fontFamily="@font/roboto_medium"
+        android:textColor="@color/text_color"
         android:textSize="20sp"
-        android:textStyle="bold" />
+ />
 
     <TextView
         android:id="@+id/deskripsi_p"
         android:layout_width="wrap_content"
         android:layout_height="35dp"
-        android:layout_alignStart="@+id/judul_p"
         android:layout_below="@+id/judul_p"
+        android:layout_marginTop="5dp"
+        android:layout_toEndOf="@+id/infomation_pengumuman"
+        android:layout_marginStart="10dp"
         android:layout_toStartOf="@+id/enter_view"
-
         android:ellipsize="end"
         android:gravity="fill"
-        android:text="Judul Tugas"
-        android:textSize="12sp" />
+        android:textSize="14sp"
+        android:fontFamily="@font/roboto_regular"
+        android:text="Judul Tugas" />
+
+    <ImageView
+        android:id="@+id/infomation_pengumuman"
+        android:layout_width="15dp"
+        android:layout_height="15dp"
+        android:layout_marginTop="5dp"
+        android:layout_alignBottom="@+id/deskripsi_p"
+        android:layout_alignStart="@+id/judul_p"
+        android:layout_below="@+id/judul_p"
+        app:srcCompat="@drawable/information" />
 
     <ImageView
         android:id="@+id/imageView3"
@@ -65,6 +88,18 @@
         android:layout_marginStart="15dp"
         app:srcCompat="@drawable/ic_clipboard"
         tools:ignore="VectorDrawableCompat" />
+
+    <ImageView
+        android:id="@+id/notif_tugas"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_alignParentEnd="true"
+        android:layout_below="@+id/garis"
+        android:visibility="gone"
+        app:srcCompat="@drawable/bell"
+        android:layout_margin="2dp"
+        tools:ignore="VectorDrawableCompat" />
+
 
     <ImageView
         android:id="@+id/enter_view"

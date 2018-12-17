@@ -71,9 +71,16 @@ public class myFirebaseInstanceService extends FirebaseMessagingService {
                 Log.e(TAG, "title pengumuman: " + title_notif_pengumuman);
             }else if(data_type.equals("tugas")){
                 Log.e(TAG, "masuk tugas: ");
+
+                String deskripsi_tugas = data.get("deskripsi_tugas");
+                String judul_tugas = data.get("judul_tugas");
+                String tanggal_kumpul = data.get("tanggal_kumpul");
+                String tanggal_tugas = data.get("tanggal_tugas");
+                String nama_tugas = data.get("nama_tugas");
+
                 String body_notif = data.get("body");
                 String title_notif = data.get("title");
-                sendNotification(body_notif, title_notif);
+                sendNotification(body_notif, title_notif, deskripsi_tugas,judul_tugas,tanggal_kumpul,tanggal_tugas,nama_tugas);
                 Log.e(TAG, "body: " + body_notif);
                 Log.e(TAG, "title: " + title_notif);
             }else if(data_type.equals("nilai")){
@@ -101,8 +108,18 @@ public class myFirebaseInstanceService extends FirebaseMessagingService {
         }
     }
 
-    private void sendNotification(String body_notif, String title_notif) {
-        Intent intent = new Intent(this, MainActivity.class);
+    private void sendNotification(String body_notif, String title_notif, String deskripsi_tugas, String judul_tugas, String tanggal_kumpul,String tanggal_tugas, String nama_tugas ) {
+        Intent intent = new Intent(this, ReadActivity.class);
+        intent.putExtra("judultugas", judul_tugas);
+        intent.putExtra("tanggaltugas", tanggal_tugas);
+        intent.putExtra("deskripsitugas", deskripsi_tugas);
+        intent.putExtra("namamatkultugas", nama_tugas);
+        intent.putExtra("tanggalkumpul", tanggal_kumpul);
+        intent.putExtra("flag", "tugas");
+
+
+
+
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, intent,
                 PendingIntent.FLAG_ONE_SHOT);
@@ -111,8 +128,8 @@ public class myFirebaseInstanceService extends FirebaseMessagingService {
                 .setAutoCancel(true)   //Automatically delete the notification
                 .setSmallIcon(R.mipmap.ic_launcher) //Notification icon
                 .setContentIntent(pendingIntent)
-                .setContentTitle(body_notif)
-                .setContentText(title_notif)
+                .setContentTitle("Connector")
+                .setContentText("Anda memiliki Tugas baru!")
                 .setVibrate(new long[] { 1000, 1000})
                 .setSound(Settings.System.DEFAULT_NOTIFICATION_URI);
 
@@ -124,8 +141,9 @@ public class myFirebaseInstanceService extends FirebaseMessagingService {
 
     private void sendNotificationPengumuman(String body_notif, String title_notif, String data_judul,
                                             String data_deskripsi, String data_tanggal,String data_nama) {
-        Intent intent = new Intent(this, DetailPengumuman.class);
-        intent.putExtra("getnama", data_nama);
+        Intent intent = new Intent(this, ReadActivity.class);
+        intent.putExtra("flag","pengumuman");
+        intent.putExtra("namapengumuman", data_nama);
         intent.putExtra("tanggalpengumuman", data_tanggal);
         intent.putExtra("judulpengumuman", data_judul);
         intent.putExtra("deskripsipengumuman", data_deskripsi);
@@ -139,8 +157,8 @@ public class myFirebaseInstanceService extends FirebaseMessagingService {
                 .setAutoCancel(true)   //Automatically delete the notification
                 .setSmallIcon(R.mipmap.ic_launcher) //Notification icon
                 .setContentIntent(pendingIntent)
-                .setContentTitle(body_notif)
-                .setContentText(title_notif)
+                .setContentTitle("Connector")
+                .setContentText("Anda memiliki Pengumuman baru!")
                 .setVibrate(new long[] { 1000, 1000})
                 .setSound(Settings.System.DEFAULT_NOTIFICATION_URI);
 
@@ -162,8 +180,8 @@ public class myFirebaseInstanceService extends FirebaseMessagingService {
                 .setAutoCancel(true)   //Automatically delete the notification
                 .setSmallIcon(R.mipmap.ic_launcher) //Notification icon
                 .setContentIntent(pendingIntent)
-                .setContentTitle(body_notif)
-                .setContentText(title_notif)
+                .setContentTitle("Connector")
+                .setContentText("Anda memiliki Nilai baru!")
                 .setVibrate(new long[] { 1000, 1000})
                 .setSound(Settings.System.DEFAULT_NOTIFICATION_URI);
 
