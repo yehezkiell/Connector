@@ -33,7 +33,7 @@ And of course Connector itself is open source with a [public repository](https:/
 
 ### <h1>Installation</h1>
 
-### If you want to contribute in this project you should do : ###
+1. If you want to contribute in this project you should do : 
 
 Connector requires newest [Node.js](https://nodejs.org/) and [NPM](https://www.npmjs.com/) to run.
 
@@ -50,7 +50,7 @@ Initialize Firebase SDK for Cloud Functions
 * Run ```firebase init functions```. The tool gives you an option to install dependencies with npm. It is safe to decline if you want to manage dependencies in another way.
 * The tool gives you two options for language support:
 
-### If you only want to run or test the project you should do : ###
+2. If you only want to run or test the project you should do : 
 
 ***There are 2 ways :***
 
