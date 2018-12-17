@@ -7,6 +7,12 @@
 This is an Android Application for Duta Wacana Christian University Management Class. I created this for my last project in college, this app actually have a website but it doesnt connect each other. Im using firebase for the backend and pure java in front end.
 
 
+<img src="https://i.imgur.com/5pEbAWe.png" width="150"> <img src="https://i.imgur.com/OcPBSBv.png" width="150"> <img src="https://i.imgur.com/jdRlgva.png" width="150"> <img src="https://i.imgur.com/3V19oX3.png" width="150"> <img src="https://i.imgur.com/vLPPoSy.png" width="150">
+
+<img src="https://i.imgur.com/jRnDH5z.png" width="150"> <img src="https://i.imgur.com/8lNoDej.png" width="150"> <img src="https://i.imgur.com/z34D3fZ.png" width="150"> <img src="https://i.imgur.com/8lNoDej.png" width="150"> <img src="https://i.imgur.com/9MAzWRu.png" width="150">
+
+
+
 
 
 #  Information
