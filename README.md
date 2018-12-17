@@ -49,6 +49,11 @@ Initialize Firebase SDK for Cloud Functions
 * Go to your Firebase project directory.
 * Run ```firebase init functions```. The tool gives you an option to install dependencies with npm. It is safe to decline if you want to manage dependencies in another way.
 
+You can run the code which is index.js with this command in the root directory :
+```sh
+firebase deploy
+```
+
 #### If you only want to run or test the project you should do : 
 
 ***There are 2 ways :***
