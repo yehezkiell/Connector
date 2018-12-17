@@ -1,4 +1,4 @@
-<h1>Connector</h1>
+# Connector
 
 
 
@@ -19,7 +19,7 @@ The website is called E-Class, E-class is a website that contains information an
 * [UKDW Portal](https://www.ukdw.ac.id/) - Portal University
 
 
-<h1>Tech</h1>
+## Tech
 
 Connector uses a number of open source projects to work properly:
 
@@ -31,7 +31,7 @@ Connector uses a number of open source projects to work properly:
 And of course Connector itself is open source with a [public repository](https://github.com/yehezkiell/EclassApp)
  on GitHub.
 
-### <h1>Installation</h1>
+## Installation
 
 #### If you want to contribute in this project you should do : 
 
@@ -68,9 +68,6 @@ First :
 Second :
 * You can take the apk in this path 
     ```sh
-    AndroidStudioProjects\EclassUkdw\app\build\outputs\apk\debug 
+    AndroidStudioProjects\EclassUkdw\app\build\outputs\apk\debug
     ```
 * Copy to your own device and install it.
-
-
-
