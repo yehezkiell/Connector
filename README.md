@@ -54,6 +54,8 @@ You can run the code which is index.js with this command in the root directory :
 firebase deploy
 ```
 
+
+</br>
 #### If you only want to run or test the project you should do : 
 
 ***There are 2 ways :***
